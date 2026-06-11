@@ -3,1226 +3,2929 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>World Scholars Cup 2026 — The Tournament of Champions</title>
+<title>IGNITION — WSC Academic Resource Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Lexend+Mega:wght@700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --void: #060412;
-    --deep: #0E0A22;
-    --cosmos: #150F2E;
-    --violet: #7C3AED;
-    --violet-light: #A78BFA;
-    --violet-glow: rgba(124,58,237,0.18);
-    --gold: #F5A623;
-    --gold-light: #FFD173;
-    --gold-pale: rgba(245,166,35,0.12);
-    --mint: #2DFFD4;
-    --mint-dim: rgba(45,255,212,0.08);
-    --cream: #F0EEF9;
-    --cream-dim: rgba(240,238,249,0.65);
-    --muted: rgba(240,238,249,0.4);
-    --line: rgba(240,238,249,0.08);
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--void);
-    color: var(--cream);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 400;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* ─── NAV ─────────────────────────────────────────── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 1.1rem 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(6,4,18,0.7);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--line);
-    transition: background 0.3s;
-  }
-
-  .nav-logo {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-    text-decoration: none;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--cream-dim);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--cream); }
-
-  .nav-cta {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gold) !important;
-    border: 1px solid rgba(245,166,35,0.4);
-    padding: 0.45rem 1.1rem;
-    border-radius: 2px;
-    transition: all 0.2s !important;
-  }
-  .nav-cta:hover { background: rgba(245,166,35,0.08) !important; border-color: var(--gold) !important; }
-
-  /* ─── HERO ────────────────────────────────────────── */
-  #hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    padding: 8rem 4rem 6rem;
-  }
-
-  #star-canvas {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-
-  .hero-eyebrow {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--mint);
-    margin-bottom: 1.8rem;
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-
-  .hero-eyebrow::before,
-  .hero-eyebrow::after {
-    content: '';
-    display: block;
-    width: 3rem;
-    height: 1px;
-    background: var(--mint);
-    opacity: 0.5;
-  }
-
-  .hero-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3.5rem, 8vw, 8rem);
-    font-weight: 900;
-    line-height: 1.0;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    letter-spacing: -0.02em;
-  }
-
-  .hero-headline em {
-    font-style: italic;
-    color: var(--gold);
-    display: block;
-  }
-
-  .hero-sub {
-    font-size: clamp(1rem, 1.6vw, 1.25rem);
-    color: var(--cream-dim);
-    text-align: center;
-    max-width: 560px;
-    margin: 2rem auto 0;
-    position: relative;
-    z-index: 2;
-    font-weight: 300;
-    line-height: 1.8;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 1.2rem;
-    margin-top: 3rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  .btn-primary {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--void);
-    background: var(--gold);
-    border: none;
-    padding: 1rem 2.2rem;
-    border-radius: 2px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.2s;
-    font-weight: 700;
-  }
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-
-  .btn-ghost {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--cream);
-    background: transparent;
-    border: 1px solid rgba(240,238,249,0.25);
-    padding: 1rem 2.2rem;
-    border-radius: 2px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .btn-ghost:hover { border-color: rgba(240,238,249,0.6); transform: translateY(-2px); }
-
-  .hero-scroll-hint {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--muted);
-    font-family: 'Space Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    animation: bounce 2.5s ease-in-out infinite;
-  }
-  .scroll-arrow { width: 1px; height: 2.5rem; background: linear-gradient(to bottom, var(--muted), transparent); }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(8px); }
-  }
-
-  /* ─── STATS BAR ───────────────────────────────────── */
-  .stats-bar {
-    background: var(--cosmos);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    padding: 2.5rem 4rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-  }
-
-  .stat-item {
-    text-align: center;
-    padding: 1rem 2rem;
-    border-right: 1px solid var(--line);
-  }
-  .stat-item:last-child { border-right: none; }
-
-  .stat-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-
-  .stat-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 0.5rem;
-  }
-
-  /* ─── SUBJECTS ────────────────────────────────────── */
-  #subjects {
-    padding: 8rem 4rem;
-    position: relative;
-  }
-
-  .section-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--violet-light);
-    margin-bottom: 1.2rem;
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 700;
-    line-height: 1.15;
-    max-width: 520px;
-    margin-bottom: 1.5rem;
-  }
-
-  .section-title span { color: var(--gold); }
-
-  .section-desc {
-    color: var(--cream-dim);
-    font-size: 1.05rem;
-    max-width: 480px;
-    margin-bottom: 4rem;
-    font-weight: 300;
-  }
-
-  .subjects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
-  }
-
-  .subject-card {
-    background: var(--deep);
-    padding: 2.5rem 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s;
-    cursor: default;
-  }
-
-  .subject-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px;
-    height: 0;
-    background: var(--accent, var(--violet));
-    transition: height 0.4s ease;
-  }
-
-  .subject-card:hover { background: var(--cosmos); }
-  .subject-card:hover::before { height: 100%; }
-
-  .subject-icon {
-    font-size: 2.2rem;
-    margin-bottom: 1.2rem;
-    display: block;
-    line-height: 1;
-  }
-
-  .subject-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--cream);
-  }
-
-  .subject-theme {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent, var(--violet-light));
-    margin-bottom: 0.8rem;
-  }
-
-  .subject-desc {
-    font-size: 0.88rem;
-    color: var(--cream-dim);
-    line-height: 1.65;
-  }
-
-  /* ─── THEME SECTION ───────────────────────────────── */
-  #theme {
-    background: var(--cosmos);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    padding: 8rem 4rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-  }
-
-  .theme-quote {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.6rem, 3vw, 2.5rem);
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.4;
-    color: var(--cream);
-    position: relative;
-    padding-left: 2rem;
-  }
-
-  .theme-quote::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0.3em;
-    width: 3px;
-    height: 80%;
-    background: linear-gradient(to bottom, var(--gold), transparent);
-  }
-
-  .theme-quote strong {
-    color: var(--gold);
-    font-style: normal;
-    font-weight: 900;
-    display: block;
-    font-size: 1.3em;
-    margin-top: 0.3em;
-  }
-
-  .theme-right .section-label { margin-bottom: 1rem; }
-
-  .theme-body {
-    font-size: 1rem;
-    color: var(--cream-dim);
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    font-weight: 300;
-  }
-
-  .theme-badge {
-    display: inline-block;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--mint);
-    border: 1px solid rgba(45,255,212,0.3);
-    padding: 0.35rem 0.9rem;
-    border-radius: 2px;
-    margin: 0.2rem;
-  }
-
-  /* ─── ROUNDS ──────────────────────────────────────── */
-  #rounds {
-    padding: 8rem 4rem;
-    position: relative;
-  }
-
-  .rounds-header {
-    text-align: center;
-    margin-bottom: 5rem;
-  }
-
-  .rounds-header .section-title {
-    margin: 0 auto 1rem;
-    text-align: center;
-  }
-
-  .rounds-header .section-desc {
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .rounds-timeline {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    position: relative;
-  }
-
-  .rounds-timeline::before {
-    content: '';
-    position: absolute;
-    top: 3.2rem;
-    left: calc(16.67% + 1rem);
-    right: calc(16.67% + 1rem);
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--violet), var(--gold), var(--violet), transparent);
-  }
-
-  .round-card {
-    background: var(--deep);
-    border: 1px solid var(--line);
-    padding: 2.5rem 2rem 2rem;
-    position: relative;
-    text-align: center;
-    transition: border-color 0.3s, transform 0.3s;
-  }
-
-  .round-card:hover {
-    border-color: rgba(124,58,237,0.4);
-    transform: translateY(-4px);
-  }
-
-  .round-number {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--violet-light);
-    margin-bottom: 1rem;
-  }
-
-  .round-city {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--cream);
-    margin-bottom: 0.3rem;
-  }
-
-  .round-date {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.68rem;
-    color: var(--gold);
-    letter-spacing: 0.1em;
-    margin-bottom: 1.2rem;
-  }
-
-  .round-desc {
-    font-size: 0.88rem;
-    color: var(--cream-dim);
-    line-height: 1.6;
-  }
-
-  .round-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--violet);
-    border: 2px solid var(--deep);
-    position: absolute;
-    top: -6px;
-    left: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0 0 16px var(--violet);
-  }
-
-  .round-card.tournament .round-dot { background: var(--gold); box-shadow: 0 0 16px var(--gold); }
-
-  /* ─── HOW IT WORKS ────────────────────────────────── */
-  #how {
-    background: var(--cosmos);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    padding: 8rem 4rem;
-  }
-
-  .how-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    margin-bottom: 5rem;
-    align-items: end;
-  }
-
-  .events-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .event-card {
-    background: var(--deep);
-    border: 1px solid var(--line);
-    padding: 2rem 1.8rem;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s;
-  }
-
-  .event-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(to right, var(--violet), var(--gold));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-  }
-
-  .event-card:hover { border-color: var(--violet-glow); }
-  .event-card:hover::after { transform: scaleX(1); }
-
-  .event-letter {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    font-weight: 900;
-    color: rgba(124,58,237,0.18);
-    position: absolute;
-    top: 1rem;
-    right: 1.2rem;
-    line-height: 1;
-    pointer-events: none;
-  }
-
-  .event-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--cream);
-    margin-bottom: 0.5rem;
-  }
-
-  .event-detail {
-    font-size: 0.85rem;
-    color: var(--cream-dim);
-    line-height: 1.6;
-  }
-
-  /* ─── TESTIMONIAL ─────────────────────────────────── */
-  #voices {
-    padding: 8rem 4rem;
-    background: var(--deep);
-  }
-
-  .voices-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .testimonial-card {
-    background: var(--cosmos);
-    border: 1px solid var(--line);
-    padding: 2.2rem;
-    position: relative;
-    transition: border-color 0.3s;
-  }
-
-  .testimonial-card:hover { border-color: rgba(245,166,35,0.25); }
-
-  .quote-mark {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    color: var(--gold);
-    opacity: 0.3;
-    line-height: 0.8;
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .testimonial-text {
-    font-size: 0.95rem;
-    color: var(--cream-dim);
-    line-height: 1.75;
-    margin-bottom: 1.5rem;
-    font-style: italic;
-  }
-
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-
-  .author-avatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: var(--violet-glow);
-    border: 1px solid rgba(124,58,237,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--violet-light);
-    font-weight: 700;
-  }
-
-  .author-name {
-    font-weight: 600;
-    font-size: 0.88rem;
-    color: var(--cream);
-    line-height: 1.3;
-  }
-
-  .author-school {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.62rem;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-  }
-
-  /* ─── REGISTER ────────────────────────────────────── */
-  #register {
-    background: var(--cosmos);
-    border-top: 1px solid var(--line);
-    padding: 10rem 4rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  #register::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .register-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.5rem, 5vw, 5rem);
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .register-headline .accent { color: var(--gold); }
-
-  .register-sub {
-    font-size: 1.1rem;
-    color: var(--cream-dim);
-    max-width: 500px;
-    margin: 0 auto 3rem;
-    font-weight: 300;
-    line-height: 1.8;
-    position: relative;
-    z-index: 1;
-  }
-
-  .register-actions {
-    display: flex;
-    gap: 1.2rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 1;
-  }
-
-  .register-note {
-    margin-top: 2rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ─── FOOTER ──────────────────────────────────────── */
-  footer {
-    background: var(--void);
-    border-top: 1px solid var(--line);
-    padding: 3rem 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .footer-logo {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .footer-links a {
-    font-size: 0.8rem;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-links a:hover { color: var(--cream); }
-
-  .footer-copy {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.62rem;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-  }
-
-  /* ─── SCROLL REVEAL ───────────────────────────────── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; }
-    * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
-  }
-
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    #hero, #subjects, #rounds, #how, #voices, #register, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 2rem 1.5rem; }
-    .stat-item { border-right: none; border-bottom: 1px solid var(--line); }
-    .stat-item:last-child, .stat-item:nth-child(2) { border-right: none; }
-    .subjects-grid, .testimonials-grid { grid-template-columns: 1fr; }
-    .rounds-timeline { grid-template-columns: 1fr; }
-    .rounds-timeline::before { display: none; }
-    #theme, .how-header { grid-template-columns: 1fr; gap: 3rem; }
-    .events-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 1.5rem; text-align: center; }
-    .footer-links { flex-wrap: wrap; justify-content: center; }
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --void: #060412;
+  --deep: #0E0A22;
+  --cosmos: #150F2E;
+  --violet: #7C3AED;
+  --violet-light: #A78BFA;
+  --violet-glow: rgba(124,58,237,0.18);
+  --gold: #F5A623;
+  --gold-light: #FFD173;
+  --gold-pale: rgba(245,166,35,0.12);
+  --mint: #2DFFD4;
+  --flame: #FF6B35;
+  --flame-dim: rgba(255,107,53,0.15);
+  --cream: #F0EEF9;
+  --cream-dim: rgba(240,238,249,0.65);
+  --muted: rgba(240,238,249,0.4);
+  --line: rgba(240,238,249,0.08);
+  --line-strong: rgba(240,238,249,0.15);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--cream);
+  font-family: 'Lexend', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  padding: 0 4rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6,4,18,0.85);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-flame {
+  width: 28px;
+  height: 28px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-flame svg { width: 22px; height: 22px; }
+
+.nav-logo-text {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: var(--cream);
+}
+
+.nav-logo-text span { color: var(--flame); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  list-style: none;
+}
+
+.nav-links li a, .nav-links li button {
+  font-family: 'Lexend', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+  border-radius: 3px;
+  transition: color 0.2s, background 0.2s;
+  position: relative;
+}
+
+.nav-links li a:hover, .nav-links li button:hover { color: var(--cream); background: rgba(240,238,249,0.05); }
+
+.nav-links li button.active {
+  color: var(--cream);
+  background: rgba(240,238,249,0.08);
+}
+
+.nav-links li button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 1rem; right: 1rem;
+  height: 2px;
+  background: var(--flame);
+  border-radius: 2px 2px 0 0;
+}
+
+.nav-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--void);
+  background: var(--flame);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  margin-left: 0.3rem;
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════════════
+   PAGE SYSTEM
+═══════════════════════════════════════════════════ */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ═══════════════════════════════════════════════════
+   SHARED COMPONENTS
+═══════════════════════════════════════════════════ */
+.section-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--violet-light);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.section-title {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.section-title span, .section-title .gold { color: var(--gold); }
+.section-title .flame { color: var(--flame); }
+
+.section-desc {
+  color: var(--cream-dim);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.8;
+  max-width: 520px;
+}
+
+.page-header {
+  padding: 7rem 4rem 3rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--cosmos);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(255,107,53,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.page-header-inner { position: relative; z-index: 1; }
+
+/* ═══════════════════════════════════════════════════
+   CARDS / GRIDS
+═══════════════════════════════════════════════════ */
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.card-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.card-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+
+.resource-card {
+  background: var(--deep);
+  border: 1px solid var(--line);
+  padding: 2rem;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+
+.resource-card:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-3px);
+}
+
+.resource-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 0;
+  background: var(--card-accent, var(--violet));
+  transition: height 0.35s ease;
+}
+
+.resource-card:hover::before { height: 100%; }
+
+.card-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--card-accent, var(--violet-light));
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--card-accent, var(--violet));
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.card-title {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.card-desc {
+  font-size: 0.85rem;
+  color: var(--cream-dim);
+  line-height: 1.65;
+  margin-bottom: 1.2rem;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.card-pill {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 2px;
+  border: 1px solid var(--line-strong);
+  color: var(--muted);
+}
+
+.card-arrow {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.85rem;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.resource-card:hover .card-arrow {
+  color: var(--card-accent, var(--violet-light));
+  transform: translateX(3px);
+}
+
+/* ═══════════════════════════════════════════════════
+   REVEAL ANIMATION
+═══════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ═══════════════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════════════ */
+.btn-primary {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--void);
+  background: var(--flame);
+  border: none;
+  padding: 0.85rem 2rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-weight: 700;
+  display: inline-block;
+}
+.btn-primary:hover { background: #ff8555; transform: translateY(-2px); }
+
+.btn-ghost {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: transparent;
+  border: 1px solid rgba(240,238,249,0.2);
+  padding: 0.85rem 2rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+}
+.btn-ghost:hover { border-color: rgba(240,238,249,0.5); transform: translateY(-2px); }
+
+.btn-sm {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--void);
+  background: var(--gold);
+  border: none;
+  padding: 0.5rem 1.1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-weight: 700;
+  display: inline-block;
+  white-space: nowrap;
+}
+.btn-sm:hover { background: var(--gold-light); }
+
+/* ═══════════════════════════════════════════════════
+   ██████  HOME PAGE
+═══════════════════════════════════════════════════ */
+#page-home {}
+
+/* Hero */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 8rem 4rem 6rem;
+}
+
+#star-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--flame);
+  margin-bottom: 1.6rem;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 1px;
+  background: var(--flame);
+  opacity: 0.4;
+}
+
+.hero-headline {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: clamp(4rem, 11vw, 11rem);
+  font-weight: 900;
+  line-height: 0.9;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  letter-spacing: -0.05em;
+  color: var(--cream);
+}
+
+.hero-headline .fire-letter {
+  color: var(--flame);
+  display: inline;
+  position: relative;
+}
+
+.hero-tagline {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 1.4rem;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-tagline span { color: var(--gold); }
+
+.hero-sub {
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  color: var(--cream-dim);
+  text-align: center;
+  max-width: 520px;
+  margin: 1.8rem auto 0;
+  position: relative;
+  z-index: 2;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.8rem;
+  position: relative;
+  z-index: 2;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  animation: bounceHint 2.5s ease-in-out infinite;
+}
+.scroll-arrow { width: 1px; height: 2rem; background: linear-gradient(to bottom, var(--muted), transparent); }
+
+@keyframes bounceHint {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* Stats bar */
+.stats-bar {
+  background: var(--cosmos);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.stat-item {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border-right: 1px solid var(--line);
+}
+.stat-item:last-child { border-right: none; }
+
+.stat-number {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.stat-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+/* What is IGNITION */
+.home-about {
+  padding: 7rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.about-left .section-title { max-width: 100%; }
+
+.about-features {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.about-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.2rem;
+  background: var(--cosmos);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.about-feature:hover { border-color: var(--flame-dim); transform: translateX(4px); }
+
+.feature-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--flame-dim);
+  border: 1px solid rgba(255,107,53,0.25);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+.feature-text .feature-name {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--cream);
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.01em;
+}
+
+.feature-text .feature-desc {
+  font-size: 0.8rem;
+  color: var(--cream-dim);
+  line-height: 1.5;
+}
+
+.about-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.about-mini-card {
+  background: var(--deep);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: background 0.25s;
+}
+.about-mini-card:hover { background: var(--cosmos); }
+
+.mini-card-icon { font-size: 2rem; display: block; margin-bottom: 0.8rem; }
+
+.mini-card-name {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.01em;
+}
+
+.mini-card-sub {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* Quick access */
+.home-quick {
+  background: var(--cosmos);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 5rem 4rem;
+}
+
+.home-quick .section-title { text-align: center; margin: 0 auto 0.5rem; }
+.home-quick .section-desc { text-align: center; margin: 0 auto 3rem; }
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.quick-card {
+  background: var(--deep);
+  border: 1px solid var(--line);
+  padding: 2.2rem 2rem;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.quick-card:hover { border-color: var(--line-strong); transform: translateY(-4px); }
+
+.quick-card-glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.quick-card:hover .quick-card-glow { opacity: 1; }
+
+.quick-icon { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+
+.quick-name {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--cream);
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.02em;
+}
+
+.quick-desc {
+  font-size: 0.82rem;
+  color: var(--cream-dim);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.quick-count {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  display: inline-block;
+}
+
+/* Home CTA */
+.home-cta {
+  padding: 8rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-cta::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-headline {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-sub {
+  font-size: 1rem;
+  color: var(--cream-dim);
+  max-width: 460px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-actions { position: relative; z-index: 1; display: flex; gap: 1rem; justify-content: center; }
+
+/* ═══════════════════════════════════════════════════
+   ██████  GUIDES PAGE
+═══════════════════════════════════════════════════ */
+#page-guides {}
+
+.guides-body { padding: 3rem 4rem 5rem; }
+
+.subject-filter {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.filter-btn {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--deep);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  padding: 0.45rem 1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.filter-btn:hover { color: var(--cream); border-color: var(--line-strong); }
+.filter-btn.active { color: var(--cream); border-color: var(--flame); background: var(--flame-dim); }
+
+.guides-section { margin-bottom: 4rem; }
+
+.guides-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.guides-section-title {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--cream);
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.subject-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.view-all-link {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.view-all-link:hover { color: var(--flame); }
+
+/* ═══════════════════════════════════════════════════
+   ██████  MOCKS PAGE
+═══════════════════════════════════════════════════ */
+#page-mocks {}
+
+.mocks-body { padding: 3rem 4rem 5rem; }
+
+.mocks-intro {
+  background: var(--cosmos);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  padding: 1.5rem 2rem;
+  margin-bottom: 3rem;
+  border-radius: 0 2px 2px 0;
+}
+
+.mocks-intro p {
+  font-size: 0.9rem;
+  color: var(--cream-dim);
+  line-height: 1.7;
+}
+
+.mocks-intro strong { color: var(--gold); font-weight: 600; }
+
+.mocks-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.mock-tab {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.mock-tab:hover { color: var(--cream); }
+
+.mock-tab.active {
+  color: var(--cream);
+}
+
+.mock-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+}
+
+.mock-panel { display: none; }
+.mock-panel.active { display: block; }
+
+.mock-card {
+  background: var(--deep);
+  border: 1px solid var(--line);
+  padding: 2rem;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.mock-card:hover { border-color: var(--line-strong); transform: translateX(4px); }
+
+.mock-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0;
+  background: var(--card-accent, var(--gold));
+  opacity: 0.12;
+  transition: width 0.3s;
+}
+
+.mock-card:hover::before { width: 100%; }
+
+.mock-number {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--line-strong);
+  letter-spacing: -0.04em;
+  min-width: 3rem;
+  text-align: right;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.mock-info { flex: 1; }
+
+.mock-title {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.01em;
+}
+
+.mock-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.mock-badge {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  border: 1px solid var(--line-strong);
+  color: var(--muted);
+}
+
+.mock-badge.new { border-color: rgba(45,255,212,0.3); color: var(--mint); }
+.mock-badge.hard { border-color: rgba(255,107,53,0.3); color: var(--flame); }
+.mock-badge.medium { border-color: rgba(245,166,35,0.3); color: var(--gold); }
+
+.mock-actions { display: flex; flex-direction: column; gap: 0.5rem; flex-shrink: 0; }
+
+/* ═══════════════════════════════════════════════════
+   ██████  HUB PAGE
+═══════════════════════════════════════════════════ */
+#page-hub {}
+
+.hub-body { padding: 3rem 4rem 5rem; }
+
+.hub-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.hub-main-section { }
+
+.hub-side-section { }
+
+.hub-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.hub-section-title {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--cream);
+  letter-spacing: -0.01em;
+}
+
+.hub-section-icon {
+  font-size: 1.1rem;
+}
+
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.note-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 1.5rem;
+  background: var(--deep);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.note-row:hover { border-color: var(--line-strong); transform: translateX(3px); }
+
+.note-subject-bar {
+  width: 3px;
+  height: 2.5rem;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.note-info { flex: 1; }
+
+.note-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 0.2rem;
+}
+
+.note-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.note-doc-icon {
+  font-size: 1.2rem;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.note-row:hover .note-doc-icon { color: var(--cream-dim); }
+
+.hub-tools-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.hub-tool {
+  background: var(--deep);
+  border: 1px solid var(--line);
+  padding: 1.2rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.hub-tool:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+
+.hub-tool-icon { font-size: 1.5rem; display: block; margin-bottom: 0.5rem; }
+
+.hub-tool-name {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--cream);
+  letter-spacing: -0.01em;
+}
+
+.hub-full-section {
+  margin-bottom: 3.5rem;
+}
+
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.vocab-card {
+  background: var(--deep);
+  padding: 1.5rem;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.vocab-card:hover { background: var(--cosmos); }
+
+.vocab-term {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.01em;
+}
+
+.vocab-def {
+  font-size: 0.78rem;
+  color: var(--cream-dim);
+  line-height: 1.5;
+}
+
+.vocab-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--card-accent, var(--violet-light));
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════
+   ██████  EVENTS PAGE
+═══════════════════════════════════════════════════ */
+#page-events {}
+
+.events-body { padding: 3rem 4rem 5rem; }
+
+.events-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 3rem;
+}
+
+.events-timeline { }
+
+.timeline-item {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.timeline-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 40px;
+  bottom: -0.5rem;
+  width: 1px;
+  background: var(--line);
+}
+
+.timeline-dot-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.9rem;
+  flex-shrink: 0;
+}
+
+.timeline-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--line-strong);
+  background: var(--deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.2s;
+}
+
+.timeline-dot.active {
+  border-color: var(--flame);
+  background: var(--flame-dim);
+  box-shadow: 0 0 14px rgba(255,107,53,0.3);
+}
+
+.timeline-dot.done {
+  border-color: var(--mint);
+  background: rgba(45,255,212,0.1);
+}
+
+.timeline-dot-inner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+.timeline-dot.active .timeline-dot-inner { background: var(--flame); }
+.timeline-dot.done .timeline-dot-inner { background: var(--mint); }
+
+.timeline-content {
+  flex: 1;
+  background: var(--deep);
+  border: 1px solid var(--line);
+  padding: 1.8rem;
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-content:hover { border-color: var(--line-strong); }
+.timeline-content.active-event { border-color: rgba(255,107,53,0.3); }
+.timeline-content.active-event::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--flame);
+}
+
+.event-date-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.event-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--flame);
+}
+
+.event-status {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+}
+
+.event-status.upcoming { color: var(--mint); border: 1px solid rgba(45,255,212,0.3); }
+.event-status.open { color: var(--gold); border: 1px solid rgba(245,166,35,0.3); }
+.event-status.past { color: var(--muted); border: 1px solid var(--line-strong); }
+
+.event-title {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--cream);
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.02em;
+}
+
+.event-location {
+  font-size: 0.82rem;
+  color: var(--cream-dim);
+  margin-bottom: 0.8rem;
+}
+
+.event-desc {
+  font-size: 0.85rem;
+  color: var(--cream-dim);
+  line-height: 1.65;
+  margin-bottom: 1.2rem;
+}
+
+.event-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.event-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+}
+
+.events-sidebar {}
+
+.sidebar-card {
+  background: var(--deep);
+  border: 1px solid var(--line);
+  padding: 1.8rem;
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-title {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--cream);
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--line);
+  letter-spacing: -0.01em;
+}
+
+.countdown-display {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.countdown-unit {
+  text-align: center;
+  background: var(--cosmos);
+  border: 1px solid var(--line);
+  padding: 0.8rem 0.3rem;
+  border-radius: 2px;
+}
+
+.countdown-num {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--flame);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.countdown-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+.countdown-target {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+
+.deadline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.deadline-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.82rem;
+}
+
+.deadline-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.deadline-info { flex: 1; }
+.deadline-name { color: var(--cream); font-weight: 500; font-size: 0.82rem; }
+.deadline-date { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--muted); letter-spacing: 0.08em; }
+
+/* ═══════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════ */
+footer {
+  background: var(--void);
+  border-top: 1px solid var(--line);
+  padding: 2.5rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.footer-logo {
+  font-family: 'Lexend Mega', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+}
+
+.footer-logo span { color: var(--flame); }
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--cream); }
+
+.footer-copy {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════ */
+@media (max-width: 1000px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { gap: 0; }
+  .nav-links li button, .nav-links li a { padding: 0.4rem 0.6rem; font-size: 0.68rem; }
+  .page-header, .guides-body, .mocks-body, .hub-body, .events-body,
+  .home-about, .home-quick, .home-cta { padding-left: 1.5rem; padding-right: 1.5rem; }
+  #hero { padding: 7rem 1.5rem 5rem; }
+  .stats-bar { grid-template-columns: repeat(3, 1fr); }
+  .stat-item:nth-child(4), .stat-item:nth-child(5) { border-top: 1px solid var(--line); }
+  .home-about { grid-template-columns: 1fr; gap: 3rem; }
+  .card-grid-3, .quick-grid { grid-template-columns: 1fr; }
+  .card-grid-2 { grid-template-columns: 1fr; }
+  .hub-grid { grid-template-columns: 1fr; }
+  .events-layout { grid-template-columns: 1fr; }
+  .vocab-grid { grid-template-columns: 1fr 1fr; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ══════════════════════════════════════════════════
+     NAV
+══════════════════════════════════════════════════ -->
 <nav>
-  <a class="nav-logo" href="#hero">WSC // 2026</a>
+  <div class="nav-brand" onclick="showPage('home')">
+    <div class="nav-flame">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C12 2 7 8 7 13C7 15.76 9.24 18 12 18C14.76 18 17 15.76 17 13C17 8 12 2 12 2Z" fill="#FF6B35"/>
+        <path d="M12 8C12 8 9 12 9 14.5C9 16 10.34 17 12 17C13.66 17 15 16 15 14.5C15 12 12 8 12 8Z" fill="#FFD173"/>
+        <path d="M12 22C14.21 22 16 20.21 16 18H8C8 20.21 9.79 22 12 22Z" fill="#FF6B35" opacity="0.6"/>
+      </svg>
+    </div>
+    <span class="nav-logo-text"><span>I</span>GNITION</span>
+  </div>
+
   <ul class="nav-links">
-    <li><a href="#subjects">Subjects</a></li>
-    <li><a href="#rounds">Rounds</a></li>
-    <li><a href="#how">Events</a></li>
-    <li><a href="#voices">Voices</a></li>
-    <li><a href="#register" class="nav-cta">Register</a></li>
+    <li><button class="active" onclick="showPage('home')" id="nav-home">Home</button></li>
+    <li><button onclick="showPage('guides')" id="nav-guides">Guides</button></li>
+    <li><button onclick="showPage('mocks')" id="nav-mocks">Mocks <span class="nav-tag">New</span></button></li>
+    <li><button onclick="showPage('hub')" id="nav-hub">Hub</button></li>
+    <li><button onclick="showPage('events')" id="nav-events">Events</button></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <canvas id="star-canvas" aria-hidden="true"></canvas>
+<!-- ══════════════════════════════════════════════════
+     HOME PAGE
+══════════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
 
-  <p class="hero-eyebrow">World Scholars Cup · Est. 2005</p>
+  <!-- Hero -->
+  <section id="hero">
+    <canvas id="star-canvas" aria-hidden="true"></canvas>
 
-  <h1 class="hero-headline">
-    Where Ideas<br>
-    <em>Change Everything</em>
-  </h1>
+    <p class="hero-eyebrow">WSC Academic Resource · 2026 Season</p>
 
-  <p class="hero-sub">
-    The global academic competition that challenges young scholars to think across disciplines, debate boldly, and discover the joy of learning.
-  </p>
+    <h1 class="hero-headline">IGN<span class="fire-letter">I</span>TION</h1>
 
-  <div class="hero-actions">
-    <a href="#register" class="btn-primary">Register Your Team</a>
-    <a href="#subjects" class="btn-ghost">Explore 2026 Theme</a>
-  </div>
+    <p class="hero-tagline">Your <span>World Scholars Cup</span> edge starts here</p>
 
-  <div class="hero-scroll-hint" aria-hidden="true">
-    Scroll
-    <div class="scroll-arrow"></div>
-  </div>
-</section>
+    <p class="hero-sub">Guides, mock tests, summary notes, and everything else you need to compete at the highest level — built by scholars, for scholars.</p>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stat-item reveal">
-    <div class="stat-number">80+</div>
-    <div class="stat-label">Countries Represented</div>
-  </div>
-  <div class="stat-item reveal reveal-delay-1">
-    <div class="stat-number">30K+</div>
-    <div class="stat-label">Scholars Per Season</div>
-  </div>
-  <div class="stat-item reveal reveal-delay-2">
-    <div class="stat-number">6</div>
-    <div class="stat-label">Academic Subjects</div>
-  </div>
-  <div class="stat-item reveal reveal-delay-3">
-    <div class="stat-number">20</div>
-    <div class="stat-label">Years of Wonder</div>
-  </div>
-</div>
-
-<!-- SUBJECTS -->
-<section id="subjects">
-  <div class="reveal">
-    <p class="section-label">The Curriculum</p>
-    <h2 class="section-title">Six Fields.<br><span>Infinite Questions.</span></h2>
-    <p class="section-desc">Every year, six subjects explore a unifying theme through essays, debates, and collaborative scholarship.</p>
-  </div>
-
-  <div class="subjects-grid">
-    <div class="subject-card reveal" style="--accent: #7C3AED;">
-      <span class="subject-icon">🌍</span>
-      <div class="subject-name">Social Studies</div>
-      <div class="subject-theme" style="color: #A78BFA;">Power & Civilization</div>
-      <p class="subject-desc">How societies organize, rise, fall, and reimagine themselves. From ancient empires to algorithmic governance — the human experiment in motion.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="showPage('guides')">Browse Guides</button>
+      <button class="btn-ghost" onclick="showPage('mocks')">Take a Mock Test</button>
     </div>
-    <div class="subject-card reveal reveal-delay-1" style="--accent: #F5A623;">
-      <span class="subject-icon">🔬</span>
-      <div class="subject-name">Science & Technology</div>
-      <div class="subject-theme" style="color: #FFD173;">Discovery & Ethics</div>
-      <p class="subject-desc">The frontier where curiosity meets consequence. Explore the ideas reshaping biology, physics, and the machines we build in our own image.</p>
-    </div>
-    <div class="subject-card reveal reveal-delay-2" style="--accent: #2DFFD4;">
-      <span class="subject-icon">📖</span>
-      <div class="subject-name">Literature & Media</div>
-      <div class="subject-theme" style="color: #2DFFD4;">Story & Meaning</div>
-      <p class="subject-desc">What stories reveal about us. From ancient myth to streaming algorithms — how narrative constructs truth, identity, and empire.</p>
-    </div>
-    <div class="subject-card reveal" style="--accent: #EF4444;">
-      <span class="subject-icon">🎭</span>
-      <div class="subject-name">Art & Music</div>
-      <div class="subject-theme" style="color: #FCA5A5;">Expression & Revolution</div>
-      <p class="subject-desc">The movements that shook culture and the masterworks that survived them. Aesthetics as a form of argument — beauty as a kind of proof.</p>
-    </div>
-    <div class="subject-card reveal reveal-delay-1" style="--accent: #22D3EE;">
-      <span class="subject-icon">💬</span>
-      <div class="subject-name">Special Area</div>
-      <div class="subject-theme" style="color: #67E8F9;">2026 Theme: The Impossible</div>
-      <p class="subject-desc">The annual wildcard that binds all six subjects. This year scholars examine what it means to attempt the undoable — and why humans can't stop trying.</p>
-    </div>
-    <div class="subject-card reveal reveal-delay-2" style="--accent: #A3E635;">
-      <span class="subject-icon">🧠</span>
-      <div class="subject-name">Ethics & Philosophy</div>
-      <div class="subject-theme" style="color: #BEF264;">Reason & Action</div>
-      <p class="subject-desc">The hardest questions dressed in the lightest language. Thought experiments, moral paradoxes, and the stubborn wisdom of the examined life.</p>
-    </div>
-  </div>
-</section>
 
-<!-- THEME -->
-<section id="theme">
-  <div class="theme-left reveal">
-    <blockquote class="theme-quote">
-      "The reasonable man adapts himself to the world.
-      <strong>The unreasonable one persists. So all progress depends on the unreasonable man."</strong>
-    </blockquote>
-    <p style="margin-top: 1.5rem; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted);">— George Bernard Shaw</p>
-  </div>
-  <div class="theme-right reveal reveal-delay-2">
-    <p class="section-label">2026 Annual Theme</p>
-    <h2 class="section-title" style="max-width: 100%;">The <span>Impossible</span></h2>
-    <p class="theme-body">
-      This season, scholars across every discipline explore ideas, events, artworks, and inventions that were once declared impossible — and the audacious minds that proved otherwise.
-    </p>
-    <p class="theme-body">
-      From double helixes to democratic revolutions, from sonatas that broke the rules to theorems that broke reality — the impossible has always been where the interesting begins.
-    </p>
-    <div>
-      <span class="theme-badge">Heavier than Air Flight</span>
-      <span class="theme-badge">Gödel's Incompleteness</span>
-      <span class="theme-badge">The Paris Commune</span>
-      <span class="theme-badge">DNA Synthesis</span>
-      <span class="theme-badge">Quantum Entanglement</span>
+    <div class="hero-scroll-hint" aria-hidden="true">
+      Scroll
+      <div class="scroll-arrow"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ROUNDS -->
-<section id="rounds">
-  <div class="rounds-header reveal">
-    <p class="section-label">The Journey</p>
-    <h2 class="section-title">From Local to Global</h2>
-    <p class="section-desc">Three rounds bring scholars from their home cities to the global stage. Each level raises the stakes — and the conversation.</p>
-  </div>
-
-  <div class="rounds-timeline">
-    <div class="round-card reveal">
-      <div class="round-dot"></div>
-      <p class="round-number">Round I</p>
-      <div class="round-city">Regional</div>
-      <div class="round-date">February – April 2026</div>
-      <p class="round-desc">Dozens of regional bowls held across six continents. Your first test — ace the Scholar's Challenge, debate a live motion, and write under pressure.</p>
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat-item reveal">
+      <div class="stat-number">6</div>
+      <div class="stat-label">Subjects Covered</div>
     </div>
-    <div class="round-card reveal reveal-delay-1">
-      <div class="round-dot"></div>
-      <p class="round-number">Round II</p>
-      <div class="round-city">National</div>
-      <div class="round-date">May – June 2026</div>
-      <p class="round-desc">Top regional teams advance to their national bowl. Scores accumulate. Reputations form. The field narrows, and the debates grow fiercer.</p>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-number">24+</div>
+      <div class="stat-label">Study Guides</div>
     </div>
-    <div class="round-card tournament reveal reveal-delay-2">
-      <div class="round-dot"></div>
-      <p class="round-number">Round III · Final</p>
-      <div class="round-city">Barcelona</div>
-      <div class="round-date">November 2026</div>
-      <p class="round-desc">The Tournament of Champions. 150+ teams. One city. The World Scholars Cup crowns its global finalists among the most rigorous academic competition on earth.</p>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-number">12</div>
+      <div class="stat-label">Mock Tests</div>
     </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="how">
-  <div class="how-header">
-    <div class="reveal">
-      <p class="section-label">The Events</p>
-      <h2 class="section-title" style="max-width: 100%;">What Scholars <span>Actually Do</span></h2>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-number">80+</div>
+      <div class="stat-label">Summary Notes</div>
     </div>
-    <div class="reveal reveal-delay-1">
-      <p style="color: var(--cream-dim); font-size: 1rem; font-weight: 300; line-height: 1.8;">
-        Four distinct events test different modes of thinking — no single event determines a team's fate. Every scholar competes individually and as part of their three-person team.
-      </p>
+    <div class="stat-item reveal reveal-delay-4">
+      <div class="stat-number">2026</div>
+      <div class="stat-label">Active Season</div>
     </div>
   </div>
 
-  <div class="events-grid">
-    <div class="event-card reveal">
-      <span class="event-letter" aria-hidden="true">S</span>
-      <div class="event-name">Scholar's Challenge</div>
-      <p class="event-detail">A rapid-fire individual quiz spanning all six subjects. Tests breadth of knowledge, speed of recall, and the ability to connect ideas across disciplines. Scores stack for the team.</p>
-    </div>
-    <div class="event-card reveal reveal-delay-1">
-      <span class="event-letter" aria-hidden="true">D</span>
-      <div class="event-name">Collaborative Writing</div>
-      <p class="event-detail">Teams write two essays together under timed conditions — one persuasive, one analytical. No notes. No internet. Just three minds and a shared argument.</p>
-    </div>
-    <div class="event-card reveal reveal-delay-2">
-      <span class="event-letter" aria-hidden="true">D</span>
-      <div class="event-name">Team Debate</div>
-      <p class="event-detail">Oxford-style format. Motions are drawn from the annual theme. Scholars prepare arguments for and against each motion, with live speaker assignment at the round. Wit required.</p>
-    </div>
-    <div class="event-card reveal reveal-delay-3">
-      <span class="event-letter" aria-hidden="true">B</span>
-      <div class="event-name">Team Bowl</div>
-      <p class="event-detail">Three scholars buzz in as a unit. Category questions cover all subjects, with a unique cooperative twist — teams can confer, argue, and change their answer once per question.</p>
-    </div>
-  </div>
-</section>
+  <!-- What is IGNITION -->
+  <section class="home-about">
+    <div class="about-left reveal">
+      <span class="section-label">What Is IGNITION?</span>
+      <h2 class="section-title">Your unfair<br><span>advantage</span> in WSC.</h2>
+      <p class="section-desc">IGNITION is a student-built academic resource hub for World Scholars Cup competitors. Everything from subject guides and summary notes to full mock tests — all in one place.</p>
 
-<!-- TESTIMONIALS -->
-<section id="voices">
-  <div class="voices-header reveal">
-    <p class="section-label">From the Field</p>
-    <h2 class="section-title" style="margin: 0 auto 0.5rem; text-align: center;">Scholars Speak</h2>
-    <p class="section-desc" style="margin: 0 auto; text-align: center;">The competition ends. The thinking doesn't.</p>
-  </div>
-
-  <div class="testimonials-grid">
-    <div class="testimonial-card reveal">
-      <span class="quote-mark" aria-hidden="true">"</span>
-      <p class="testimonial-text">I came expecting a quiz competition. I left debating the epistemology of scientific models with a student from Singapore at 2am. WSC rewired how I think about learning itself.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">AK</div>
-        <div>
-          <div class="author-name">Ayaan Karim</div>
-          <div class="author-school">Dubai, UAE · 2024 Gold Division</div>
+      <div class="about-features">
+        <div class="about-feature" onclick="showPage('guides')">
+          <div class="feature-icon">📖</div>
+          <div class="feature-text">
+            <div class="feature-name">Subject Guides</div>
+            <div class="feature-desc">Deep-dive resources for all six WSC subjects, written to match the 2026 theme.</div>
+          </div>
+        </div>
+        <div class="about-feature" onclick="showPage('mocks')">
+          <div class="feature-icon">📝</div>
+          <div class="feature-text">
+            <div class="feature-name">Mock Tests & Quizzes</div>
+            <div class="feature-desc">Scholar's Challenge-style mock papers with full answer keys and scoring guidance.</div>
+          </div>
+        </div>
+        <div class="about-feature" onclick="showPage('hub')">
+          <div class="feature-icon">🗃️</div>
+          <div class="feature-text">
+            <div class="feature-name">The Hub</div>
+            <div class="feature-desc">Summary notes from Google Docs, vocabulary lists, essay frameworks, and debate prep.</div>
+          </div>
+        </div>
+        <div class="about-feature" onclick="showPage('events')">
+          <div class="feature-icon">📅</div>
+          <div class="feature-text">
+            <div class="feature-name">Events Calendar</div>
+            <div class="feature-desc">Track all regional, national, and global rounds with deadlines and registration links.</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="testimonial-card reveal reveal-delay-1">
-      <span class="quote-mark" aria-hidden="true">"</span>
-      <p class="testimonial-text">Our team barely knew each other before regionals. After Barcelona, we'd co-authored eight essays, argued across every subject, and somehow became best friends. WSC does that.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">MV</div>
-        <div>
-          <div class="author-name">Mia Václavová</div>
-          <div class="author-school">Prague, Czech Republic · 2025</div>
+
+    <div class="about-right reveal reveal-delay-2">
+      <div class="about-mini-card">
+        <span class="mini-card-icon">🌍</span>
+        <div class="mini-card-name">Social Studies</div>
+        <div class="mini-card-sub">Power &amp; Civilization</div>
+      </div>
+      <div class="about-mini-card">
+        <span class="mini-card-icon">🔬</span>
+        <div class="mini-card-name">Science</div>
+        <div class="mini-card-sub">Discovery &amp; Ethics</div>
+      </div>
+      <div class="about-mini-card">
+        <span class="mini-card-icon">📖</span>
+        <div class="mini-card-name">Literature</div>
+        <div class="mini-card-sub">Story &amp; Meaning</div>
+      </div>
+      <div class="about-mini-card">
+        <span class="mini-card-icon">🎭</span>
+        <div class="mini-card-name">Art &amp; Music</div>
+        <div class="mini-card-sub">Expression &amp; Revolution</div>
+      </div>
+      <div class="about-mini-card">
+        <span class="mini-card-icon">💬</span>
+        <div class="mini-card-name">Special Area</div>
+        <div class="mini-card-sub">The Impossible</div>
+      </div>
+      <div class="about-mini-card">
+        <span class="mini-card-icon">🧠</span>
+        <div class="mini-card-name">Ethics</div>
+        <div class="mini-card-sub">Reason &amp; Action</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Access -->
+  <section class="home-quick">
+    <span class="section-label" style="text-align:center;display:block;">Jump Right In</span>
+    <h2 class="section-title">Start preparing <span>today.</span></h2>
+    <p class="section-desc">Pick where you want to begin — everything is ready for the 2026 season.</p>
+
+    <div class="quick-grid">
+      <div class="quick-card reveal" onclick="showPage('guides')" style="--qcolor: var(--violet)">
+        <div class="quick-card-glow" style="background: radial-gradient(circle at 30% 30%, rgba(124,58,237,0.08), transparent 60%)"></div>
+        <span class="quick-icon">📚</span>
+        <div class="quick-name">Study Guides</div>
+        <p class="quick-desc">Comprehensive, subject-by-subject guides written for the 2026 theme. From overviews to deep dives.</p>
+        <span class="quick-count">24 guides available</span>
+      </div>
+      <div class="quick-card reveal reveal-delay-1" onclick="showPage('mocks')" style="--qcolor: var(--gold)">
+        <div class="quick-card-glow" style="background: radial-gradient(circle at 30% 30%, rgba(245,166,35,0.08), transparent 60%)"></div>
+        <span class="quick-icon">🧪</span>
+        <div class="quick-name">Mock Tests</div>
+        <p class="quick-desc">Full Scholar's Challenge mocks, debate motion banks, and timed essay prompts with rubrics.</p>
+        <span class="quick-count">12 tests available</span>
+      </div>
+      <div class="quick-card reveal reveal-delay-2" onclick="showPage('hub')" style="--qcolor: var(--mint)">
+        <div class="quick-card-glow" style="background: radial-gradient(circle at 30% 30%, rgba(45,255,212,0.06), transparent 60%)"></div>
+        <span class="quick-icon">🗃️</span>
+        <div class="quick-name">The Hub</div>
+        <p class="quick-desc">All summary notes, vocabulary lists, essay frameworks, and debate prep in one organised space.</p>
+        <span class="quick-count">80+ resources</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="home-cta">
+    <h2 class="cta-headline reveal">Ready to <span style="color:var(--flame)">ignite</span><br>your prep?</h2>
+    <p class="cta-sub reveal reveal-delay-1">Everything you need for WSC 2026 is already here. Dive in, explore, and start competing smarter.</p>
+    <div class="cta-actions reveal reveal-delay-2">
+      <button class="btn-primary" onclick="showPage('guides')">Start with Guides</button>
+      <button class="btn-ghost" onclick="showPage('hub')">Explore the Hub</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">
+      <span class="footer-logo"><span>I</span>GNITION</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#">About</a></li>
+      <li><a href="#">WSC Official</a></li>
+      <li><a href="#">Contribute</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 IGNITION · WSC Resource Hub</div>
+  </footer>
+
+</div><!-- /page-home -->
+
+<!-- ══════════════════════════════════════════════════
+     GUIDES PAGE
+══════════════════════════════════════════════════ -->
+<div id="page-guides" class="page">
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <span class="section-label">IGNITION Guides</span>
+      <h1 class="section-title" style="max-width:100%;">Subject <span>Study Guides</span></h1>
+      <p class="section-desc">In-depth guides for every WSC 2026 subject — written to match the annual theme <em>The Impossible</em>. Updated regularly throughout the season.</p>
+    </div>
+  </div>
+
+  <div class="guides-body">
+
+    <!-- Filter -->
+    <div class="subject-filter">
+      <button class="filter-btn active" onclick="filterGuides('all', this)">All Subjects</button>
+      <button class="filter-btn" onclick="filterGuides('social', this)">🌍 Social Studies</button>
+      <button class="filter-btn" onclick="filterGuides('science', this)">🔬 Science</button>
+      <button class="filter-btn" onclick="filterGuides('literature', this)">📖 Literature</button>
+      <button class="filter-btn" onclick="filterGuides('art', this)">🎭 Art &amp; Music</button>
+      <button class="filter-btn" onclick="filterGuides('special', this)">💬 Special Area</button>
+      <button class="filter-btn" onclick="filterGuides('ethics', this)">🧠 Ethics</button>
+    </div>
+
+    <!-- Social Studies -->
+    <div class="guides-section" data-subject="social">
+      <div class="guides-section-header">
+        <div class="guides-section-title">
+          <span class="subject-dot" style="background:#A78BFA"></span>
+          Social Studies
+        </div>
+        <a href="#" class="view-all-link">View all →</a>
+      </div>
+      <div class="card-grid-3">
+        <div class="resource-card reveal" style="--card-accent:#A78BFA">
+          <div class="card-tag"><span class="card-dot"></span>Social Studies · Overview</div>
+          <div class="card-title">The Impossible Revolution: Power Structures That Couldn't Hold</div>
+          <p class="card-desc">How empires crumble against ideas that seem impossible. From the French Revolution to decolonisation — when the impossible becomes inevitable.</p>
+          <div class="card-meta">
+            <span class="card-pill">25 min read</span>
+            <span class="card-pill">Intermediate</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="resource-card reveal reveal-delay-1" style="--card-accent:#A78BFA">
+          <div class="card-tag"><span class="card-dot"></span>Social Studies · Deep Dive</div>
+          <div class="card-title">Democratic Theory and Its Impossible Promises</div>
+          <p class="card-desc">A critical look at how democratic systems make promises they structurally can't keep — and why that tension drives history.</p>
+          <div class="card-meta">
+            <span class="card-pill">18 min read</span>
+            <span class="card-pill">Advanced</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="resource-card reveal reveal-delay-2" style="--card-accent:#A78BFA">
+          <div class="card-tag"><span class="card-dot"></span>Social Studies · Facts</div>
+          <div class="card-title">Key Events & Figures Quick Reference</div>
+          <p class="card-desc">A compact reference card of the most testable social studies facts for the Scholar's Challenge — dates, names, and turning points.</p>
+          <div class="card-meta">
+            <span class="card-pill">Quick ref</span>
+            <span class="card-pill">All levels</span>
+            <span class="card-arrow">→</span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="testimonial-card reveal reveal-delay-2">
-      <span class="quote-mark" aria-hidden="true">"</span>
-      <p class="testimonial-text">The essay prompts don't have right answers. That's what makes them terrifying and thrilling. You learn to commit to an argument under conditions that make you sharper.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">JT</div>
-        <div>
-          <div class="author-name">Joel Tanaka</div>
-          <div class="author-school">Osaka, Japan · Coach, 3 Seasons</div>
+
+    <!-- Science -->
+    <div class="guides-section" data-subject="science">
+      <div class="guides-section-header">
+        <div class="guides-section-title">
+          <span class="subject-dot" style="background:#67E8F9"></span>
+          Science &amp; Technology
+        </div>
+        <a href="#" class="view-all-link">View all →</a>
+      </div>
+      <div class="card-grid-3">
+        <div class="resource-card reveal" style="--card-accent:#67E8F9">
+          <div class="card-tag"><span class="card-dot"></span>Science · Biology</div>
+          <div class="card-title">The Double Helix: Cracking the Impossible Code of Life</div>
+          <p class="card-desc">The story of DNA's discovery, what it means scientifically, and why it was considered impossible to sequence. Essential for the 2026 theme.</p>
+          <div class="card-meta">
+            <span class="card-pill">20 min read</span>
+            <span class="card-pill">Intermediate</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="resource-card reveal reveal-delay-1" style="--card-accent:#67E8F9">
+          <div class="card-tag"><span class="card-dot"></span>Science · Physics</div>
+          <div class="card-title">Quantum Entanglement and Spooky Action</div>
+          <p class="card-desc">Einstein called it impossible. It won the 2022 Nobel Prize. A guide to quantum entanglement and what it means for reality and information.</p>
+          <div class="card-meta">
+            <span class="card-pill">22 min read</span>
+            <span class="card-pill">Advanced</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="resource-card reveal reveal-delay-2" style="--card-accent:#67E8F9">
+          <div class="card-tag"><span class="card-dot"></span>Science · Ethics</div>
+          <div class="card-title">When Science Outpaces Ethics: Case Studies</div>
+          <p class="card-desc">CRISPR, cloning, gain-of-function research — when the impossible becomes possible before the ethics catch up.</p>
+          <div class="card-meta">
+            <span class="card-pill">15 min read</span>
+            <span class="card-pill">Intermediate</span>
+            <span class="card-arrow">→</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- REGISTER CTA -->
-<section id="register">
-  <h2 class="register-headline reveal">
-    Your Team.<br>Your <span class="accent">Ideas.</span><br>The World.
-  </h2>
-  <p class="register-sub reveal reveal-delay-1">
-    Registration for the 2026 season is open now. Teams of three scholars, grades 6–12. All levels of experience welcome.
-  </p>
-  <div class="register-actions reveal reveal-delay-2">
-    <a href="#" class="btn-primary">Register a Team</a>
-    <a href="#" class="btn-ghost">Download Info Pack</a>
-  </div>
-  <p class="register-note reveal reveal-delay-3">
-    Questions? · scholars@worldscholarscup.com · Individual scholar placement available
-  </p>
-</section>
+    <!-- Literature -->
+    <div class="guides-section" data-subject="literature">
+      <div class="guides-section-header">
+        <div class="guides-section-title">
+          <span class="subject-dot" style="background:#2DFFD4"></span>
+          Literature &amp; Media
+        </div>
+        <a href="#" class="view-all-link">View all →</a>
+      </div>
+      <div class="card-grid-3">
+        <div class="resource-card reveal" style="--card-accent:#2DFFD4">
+          <div class="card-tag"><span class="card-dot"></span>Literature · Analysis</div>
+          <div class="card-title">Impossible Quests: From Odysseus to Don Quixote</div>
+          <p class="card-desc">The literary archetype of the impossible quest and what it reveals about human ambition, self-deception, and the meaning of failure.</p>
+          <div class="card-meta">
+            <span class="card-pill">20 min read</span>
+            <span class="card-pill">Intermediate</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="resource-card reveal reveal-delay-1" style="--card-accent:#2DFFD4">
+          <div class="card-tag"><span class="card-dot"></span>Literature · Essay Prep</div>
+          <div class="card-title">Essay Frameworks for Literature Prompts</div>
+          <p class="card-desc">Structural templates for literary analysis essays — how to build an argument in under 30 minutes under WSC conditions.</p>
+          <div class="card-meta">
+            <span class="card-pill">Toolkit</span>
+            <span class="card-pill">All levels</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="resource-card reveal reveal-delay-2" style="--card-accent:#2DFFD4">
+          <div class="card-tag"><span class="card-dot"></span>Literature · Media</div>
+          <div class="card-title">Utopian Fiction and the Politics of the Impossible</div>
+          <p class="card-desc">From Thomas More to Ursula K. Le Guin — how utopian and dystopian fiction maps the impossible desires of their historical moments.</p>
+          <div class="card-meta">
+            <span class="card-pill">18 min read</span>
+            <span class="card-pill">Advanced</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">World Scholars Cup</div>
-  <ul class="footer-links">
-    <li><a href="#">About WSC</a></li>
-    <li><a href="#">Past Themes</a></li>
-    <li><a href="#">Scoring Guide</a></li>
-    <li><a href="#">Volunteers</a></li>
-    <li><a href="#">Press</a></li>
-  </ul>
-  <div class="footer-copy">© 2026 World Scholars Cup. All Rights Reserved.</div>
-</footer>
+    <!-- Art & Music -->
+    <div class="guides-section" data-subject="art">
+      <div class="guides-section-header">
+        <div class="guides-section-title">
+          <span class="subject-dot" style="background:#FCA5A5"></span>
+          Art &amp; Music
+        </div>
+        <a href="#" class="view-all-link">View all →</a>
+      </div>
+      <div class="card-grid-3">
+        <div class="resource-card reveal" style="--card-accent:#FCA5A5">
+          <div class="card-tag"><span class="card-dot"></span>Art · Movement</div>
+          <div class="card-title">Modernism: When Art Made the Impossible Its Subject</div>
+          <p class="card-desc">How Picasso, Stravinsky, and Joyce broke every rule simultaneously — and why that rupture is the defining artistic event of the 20th century.</p>
+          <div class="card-meta">
+            <span class="card-pill">22 min read</span>
+            <span class="card-pill">Intermediate</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="resource-card reveal reveal-delay-1" style="--card-accent:#FCA5A5">
+          <div class="card-tag"><span class="card-dot"></span>Music · Theory</div>
+          <div class="card-title">Beethoven's Ninth: Composing While Deaf</div>
+          <p class="card-desc">The most famous impossible artistic act in history — and what it actually means musically, biographically, and culturally.</p>
+          <div class="card-meta">
+            <span class="card-pill">14 min read</span>
+            <span class="card-pill">Beginner</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="resource-card reveal reveal-delay-2" style="--card-accent:#FCA5A5">
+          <div class="card-tag"><span class="card-dot"></span>Art · Reference</div>
+          <div class="card-title">Key Artists, Works & Movements: Quick Reference</div>
+          <p class="card-desc">Compressed, exam-ready reference covering the major artworks, composers, and movements you need to know cold.</p>
+          <div class="card-meta">
+            <span class="card-pill">Quick ref</span>
+            <span class="card-pill">All levels</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Special Area -->
+    <div class="guides-section" data-subject="special">
+      <div class="guides-section-header">
+        <div class="guides-section-title">
+          <span class="subject-dot" style="background:#F5A623"></span>
+          Special Area — The Impossible
+        </div>
+        <a href="#" class="view-all-link">View all →</a>
+      </div>
+      <div class="card-grid-3">
+        <div class="resource-card reveal" style="--card-accent:#F5A623">
+          <div class="card-tag"><span class="card-dot"></span>Special Area · Core</div>
+          <div class="card-title">What Does "Impossible" Actually Mean? A Framework</div>
+          <p class="card-desc">A conceptual map of the theme — logical impossibility vs. physical impossibility vs. social impossibility. Essential reading for all subjects.</p>
+          <div class="card-meta">
+            <span class="card-pill">30 min read</span>
+            <span class="card-pill">Core guide</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="resource-card reveal reveal-delay-1" style="--card-accent:#F5A623">
+          <div class="card-tag"><span class="card-dot"></span>Special Area · Cases</div>
+          <div class="card-title">Ten Moments the Impossible Became Real</div>
+          <p class="card-desc">Gödel's incompleteness theorem, Kitty Hawk, the Berlin Wall's fall — ten pivotal moments and the arguments that said they couldn't happen.</p>
+          <div class="card-meta">
+            <span class="card-pill">25 min read</span>
+            <span class="card-pill">Intermediate</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="resource-card reveal reveal-delay-2" style="--card-accent:#F5A623">
+          <div class="card-tag"><span class="card-dot"></span>Special Area · Debate</div>
+          <div class="card-title">Debate Motions Bank: The Impossible (2026)</div>
+          <p class="card-desc">30 curated debate motions drawing from the 2026 theme, with brief argument skeletons for both sides of each motion.</p>
+          <div class="card-meta">
+            <span class="card-pill">Debate prep</span>
+            <span class="card-pill">Advanced</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ethics -->
+    <div class="guides-section" data-subject="ethics">
+      <div class="guides-section-header">
+        <div class="guides-section-title">
+          <span class="subject-dot" style="background:#BEF264"></span>
+          Ethics &amp; Philosophy
+        </div>
+        <a href="#" class="view-all-link">View all →</a>
+      </div>
+      <div class="card-grid-3">
+        <div class="resource-card reveal" style="--card-accent:#BEF264">
+          <div class="card-tag"><span class="card-dot"></span>Ethics · Core</div>
+          <div class="card-title">Moral Impossibility: When Ethics Demands the Undoable</div>
+          <p class="card-desc">Moral dilemmas where every option causes harm — from trolley problems to real historical choices. How philosophy frames the impossible choice.</p>
+          <div class="card-meta">
+            <span class="card-pill">20 min read</span>
+            <span class="card-pill">Intermediate</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="resource-card reveal reveal-delay-1" style="--card-accent:#BEF264">
+          <div class="card-tag"><span class="card-dot"></span>Philosophy · Logic</div>
+          <div class="card-title">Gödel, Paradox, and the Limits of Reason</div>
+          <p class="card-desc">Incompleteness theorems, Zeno's paradoxes, Russell's set — where logic hits a wall and what that wall tells us about the nature of knowledge.</p>
+          <div class="card-meta">
+            <span class="card-pill">28 min read</span>
+            <span class="card-pill">Advanced</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="resource-card reveal reveal-delay-2" style="--card-accent:#BEF264">
+          <div class="card-tag"><span class="card-dot"></span>Ethics · Applied</div>
+          <div class="card-title">Ethical Frameworks Cheat Sheet</div>
+          <p class="card-desc">Consequentialism, deontology, virtue ethics, contractarianism — condensed into exam-ready definitions and application examples.</p>
+          <div class="card-meta">
+            <span class="card-pill">Quick ref</span>
+            <span class="card-pill">All levels</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /guides-body -->
+
+  <footer>
+    <div class="footer-brand"><span class="footer-logo"><span>I</span>GNITION</span></div>
+    <ul class="footer-links">
+      <li><a href="#" onclick="showPage('home')">Home</a></li>
+      <li><a href="#">WSC Official</a></li>
+      <li><a href="#">Contribute a Guide</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 IGNITION · WSC Resource Hub</div>
+  </footer>
+
+</div><!-- /page-guides -->
+
+<!-- ══════════════════════════════════════════════════
+     MOCKS PAGE
+══════════════════════════════════════════════════ -->
+<div id="page-mocks" class="page">
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <span class="section-label">IGNITION Mocks</span>
+      <h1 class="section-title" style="max-width:100%;">Mock Tests <span class="gold">&amp; Quizzes</span></h1>
+      <p class="section-desc">Full Scholar's Challenge mocks, timed essay prompts, and debate motion banks — built to replicate actual WSC conditions.</p>
+    </div>
+  </div>
+
+  <div class="mocks-body">
+
+    <div class="mocks-intro">
+      <p><strong>How to use these mocks:</strong> Scholar's Challenge tests are 60 minutes, 300 questions across 6 subjects. Set a timer, work through the test without notes, then compare your answers against the key. Each test includes a difficulty breakdown and a subject-by-subject score sheet.</p>
+    </div>
+
+    <!-- Sub-tabs -->
+    <div class="mocks-tabs">
+      <button class="mock-tab active" onclick="showMockTab('scholars', this)">Scholar's Challenge</button>
+      <button class="mock-tab" onclick="showMockTab('essays', this)">Essay Prompts</button>
+      <button class="mock-tab" onclick="showMockTab('debate', this)">Debate Motions</button>
+      <button class="mock-tab" onclick="showMockTab('bowl', this)">Team Bowl</button>
+    </div>
+
+    <!-- Scholar's Challenge Panel -->
+    <div id="mock-panel-scholars" class="mock-panel active">
+
+      <div class="mock-card reveal" style="--card-accent: var(--gold)">
+        <div class="mock-number">01</div>
+        <div class="mock-info">
+          <div class="mock-title">Full Scholar's Challenge — Set A</div>
+          <div class="mock-meta-row">
+            <span class="mock-badge">300 Questions</span>
+            <span class="mock-badge">60 min</span>
+            <span class="mock-badge new">New</span>
+            <span class="mock-badge medium">Medium</span>
+          </div>
+        </div>
+        <div class="mock-actions">
+          <a href="#" class="btn-sm">Start Test</a>
+          <a href="#" class="btn-ghost" style="font-size:0.65rem; padding: 0.4rem 0.9rem;">Answer Key</a>
+        </div>
+      </div>
+
+      <div class="mock-card reveal reveal-delay-1" style="--card-accent: var(--gold)">
+        <div class="mock-number">02</div>
+        <div class="mock-info">
+          <div class="mock-title">Full Scholar's Challenge — Set B</div>
+          <div class="mock-meta-row">
+            <span class="mock-badge">300 Questions</span>
+            <span class="mock-badge">60 min</span>
+            <span class="mock-badge hard">Hard</span>
+          </div>
+        </div>
+        <div class="mock-actions">
+          <a href="#" class="btn-sm">Start Test</a>
+          <a href="#" class="btn-ghost" style="font-size:0.65rem; padding: 0.4rem 0.9rem;">Answer Key</a>
+        </div>
+      </div>
+
+      <div class="mock-card reveal reveal-delay-2" style="--card-accent: var(--gold)">
+        <div class="mock-number">03</div>
+        <div class="mock-info">
+          <div class="mock-title">Subject Focus: Social Studies Only</div>
+          <div class="mock-meta-row">
+            <span class="mock-badge">50 Questions</span>
+            <span class="mock-badge">10 min</span>
+            <span class="mock-badge medium">Medium</span>
+          </div>
+        </div>
+        <div class="mock-actions">
+          <a href="#" class="btn-sm">Start Test</a>
+          <a href="#" class="btn-ghost" style="font-size:0.65rem; padding: 0.4rem 0.9rem;">Answer Key</a>
+        </div>
+      </div>
+
+      <div class="mock-card reveal reveal-delay-3" style="--card-accent: var(--gold)">
+        <div class="mock-number">04</div>
+        <div class="mock-info">
+          <div class="mock-title">Subject Focus: Science &amp; Technology Only</div>
+          <div class="mock-meta-row">
+            <span class="mock-badge">50 Questions</span>
+            <span class="mock-badge">10 min</span>
+            <span class="mock-badge new">New</span>
+            <span class="mock-badge hard">Hard</span>
+          </div>
+        </div>
+        <div class="mock-actions">
+          <a href="#" class="btn-sm">Start Test</a>
+          <a href="#" class="btn-ghost" style="font-size:0.65rem; padding: 0.4rem 0.9rem;">Answer Key</a>
+        </div>
+      </div>
+
+      <div class="mock-card reveal reveal-delay-4" style="--card-accent: var(--gold)">
+        <div class="mock-number">05</div>
+        <div class="mock-info">
+          <div class="mock-title">The Impossible — Special Area Focus</div>
+          <div class="mock-meta-row">
+            <span class="mock-badge">80 Questions</span>
+            <span class="mock-badge">15 min</span>
+            <span class="mock-badge medium">Medium</span>
+          </div>
+        </div>
+        <div class="mock-actions">
+          <a href="#" class="btn-sm">Start Test</a>
+          <a href="#" class="btn-ghost" style="font-size:0.65rem; padding: 0.4rem 0.9rem;">Answer Key</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Essay Prompts Panel -->
+    <div id="mock-panel-essays" class="mock-panel">
+
+      <div class="mock-card reveal" style="--card-accent: var(--mint)">
+        <div class="mock-number">E1</div>
+        <div class="mock-info">
+          <div class="mock-title">Persuasive: "The truly impossible task is changing human nature."</div>
+          <div class="mock-meta-row">
+            <span class="mock-badge">30 min</span>
+            <span class="mock-badge">Persuasive</span>
+            <span class="mock-badge new">New</span>
+          </div>
+        </div>
+        <div class="mock-actions">
+          <a href="#" class="btn-sm">View Prompt</a>
+          <a href="#" class="btn-ghost" style="font-size:0.65rem; padding: 0.4rem 0.9rem;">Sample Essay</a>
+        </div>
+      </div>
+
+      <div class="mock-card reveal reveal-delay-1" style="--card-accent: var(--mint)">
+        <div class="mock-number">E2</div>
+        <div class="mock-info">
+          <div class="mock-title">Analytical: Evaluate the claim that democracy was an impossible invention.</div>
+          <div class="mock-meta-row">
+            <span class="mock-badge">30 min</span>
+            <span class="mock-badge">Analytical</span>
+            <span class="mock-badge medium">Medium</span>
+          </div>
+        </div>
+        <div class="mock-actions">
+          <a href="#" class="btn-sm">View Prompt</a>
+          <a href="#" class="btn-ghost" style="font-size:0.65rem; padding: 0.4rem 0.9rem;">Sample Essay</a>
+        </div>
+      </div>
+
+      <div class="mock-card reveal reveal-delay-2" style="--card-accent: var(--mint)">
+        <div class="mock-number">E3</div>
+        <div class="mock-info">
+          <div class="mock-title">Persuasive: Science has made the word "impossible" obsolete.</div>
+          <div class="mock-meta-row">
+            <span class="mock-badge">30 min</span>
+            <span class="mock-badge">Persuasive</span>
+            <span class="mock-badge hard">Hard</span>
+          </div>
+        </div>
+        <div class="mock-actions">
+          <a href="#" class="btn-sm">View Prompt</a>
+          <a href="#" class="btn-ghost" style="font-size:0.65rem; padding: 0.4rem 0.9rem;">Sample Essay</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Debate Motions Panel -->
+    <div id="mock-panel-debate" class="mock-panel">
+
+      <div class="mock-card reveal" style="--card-accent: var(--violet-light)">
+        <div class="mock-number">D1</div>
+        <div class="mock-info">
+          <div class="mock-title">"This House believes that the impossible dream is more valuable than the achieved one."</div>
+          <div class="mock-meta-row">
+            <span class="mock-badge">Oxford Style</span>
+            <span class="mock-badge">Ethics / Special</span>
+          </div>
+        </div>
+        <div class="mock-actions">
+          <a href="#" class="btn-sm">Prep Notes</a>
+        </div>
+      </div>
+
+      <div class="mock-card reveal reveal-delay-1" style="--card-accent: var(--violet-light)">
+        <div class="mock-number">D2</div>
+        <div class="mock-info">
+          <div class="mock-title">"This House would declare universal peace impossible and plan accordingly."</div>
+          <div class="mock-meta-row">
+            <span class="mock-badge">Oxford Style</span>
+            <span class="mock-badge">Social Studies</span>
+            <span class="mock-badge hard">Hard</span>
+          </div>
+        </div>
+        <div class="mock-actions">
+          <a href="#" class="btn-sm">Prep Notes</a>
+        </div>
+      </div>
+
+      <div class="mock-card reveal reveal-delay-2" style="--card-accent: var(--violet-light)">
+        <div class="mock-number">D3</div>
+        <div class="mock-info">
+          <div class="mock-title">"This House believes that art which attempts the impossible is always superior to art that succeeds."</div>
+          <div class="mock-meta-row">
+            <span class="mock-badge">Oxford Style</span>
+            <span class="mock-badge">Art / Literature</span>
+          </div>
+        </div>
+        <div class="mock-actions">
+          <a href="#" class="btn-sm">Prep Notes</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Team Bowl Panel -->
+    <div id="mock-panel-bowl" class="mock-panel">
+
+      <div class="mock-card reveal" style="--card-accent: var(--flame)">
+        <div class="mock-number">B1</div>
+        <div class="mock-info">
+          <div class="mock-title">Team Bowl Practice Set — Round 1</div>
+          <div class="mock-meta-row">
+            <span class="mock-badge">40 Questions</span>
+            <span class="mock-badge">Team of 3</span>
+            <span class="mock-badge medium">Medium</span>
+          </div>
+        </div>
+        <div class="mock-actions">
+          <a href="#" class="btn-sm">View Set</a>
+          <a href="#" class="btn-ghost" style="font-size:0.65rem; padding: 0.4rem 0.9rem;">Answer Key</a>
+        </div>
+      </div>
+
+      <div class="mock-card reveal reveal-delay-1" style="--card-accent: var(--flame)">
+        <div class="mock-number">B2</div>
+        <div class="mock-info">
+          <div class="mock-title">Team Bowl Practice Set — Lightning Round</div>
+          <div class="mock-meta-row">
+            <span class="mock-badge">20 Questions</span>
+            <span class="mock-badge">5 min</span>
+            <span class="mock-badge hard">Hard</span>
+            <span class="mock-badge new">New</span>
+          </div>
+        </div>
+        <div class="mock-actions">
+          <a href="#" class="btn-sm">View Set</a>
+          <a href="#" class="btn-ghost" style="font-size:0.65rem; padding: 0.4rem 0.9rem;">Answer Key</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div><!-- /mocks-body -->
+
+  <footer>
+    <div class="footer-brand"><span class="footer-logo"><span>I</span>GNITION</span></div>
+    <ul class="footer-links">
+      <li><a href="#" onclick="showPage('home')">Home</a></li>
+      <li><a href="#">Submit a Mock</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 IGNITION · WSC Resource Hub</div>
+  </footer>
+
+</div><!-- /page-mocks -->
+
+<!-- ══════════════════════════════════════════════════
+     HUB PAGE
+══════════════════════════════════════════════════ -->
+<div id="page-hub" class="page">
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <span class="section-label">IGNITION Hub</span>
+      <h1 class="section-title" style="max-width:100%;">The <span>Resource Hub</span></h1>
+      <p class="section-desc">Summary notes from Google Docs, vocabulary lists, essay frameworks, debate prep tools, and everything else that doesn't fit neatly into a guide.</p>
+    </div>
+  </div>
+
+  <div class="hub-body">
+
+    <div class="hub-grid">
+
+      <!-- Summary Notes (main) -->
+      <div class="hub-main-section">
+        <div class="hub-section-header">
+          <span class="hub-section-icon">📄</span>
+          <span class="hub-section-title">Summary Notes</span>
+        </div>
+        <div class="notes-list">
+
+          <a href="#" class="note-row reveal">
+            <div class="note-subject-bar" style="background:#A78BFA"></div>
+            <div class="note-info">
+              <div class="note-title">Social Studies: Power, Empire &amp; Revolution — Full Summary</div>
+              <div class="note-sub">Social Studies · 18 pages · Updated Apr 2026</div>
+            </div>
+            <span class="note-doc-icon">↗</span>
+          </a>
+
+          <a href="#" class="note-row reveal reveal-delay-1">
+            <div class="note-subject-bar" style="background:#A78BFA"></div>
+            <div class="note-info">
+              <div class="note-title">Social Studies: Governance Systems & Democratic Theory</div>
+              <div class="note-sub">Social Studies · 12 pages · Updated Mar 2026</div>
+            </div>
+            <span class="note-doc-icon">↗</span>
+          </a>
+
+          <a href="#" class="note-row reveal reveal-delay-2">
+            <div class="note-subject-bar" style="background:#67E8F9"></div>
+            <div class="note-info">
+              <div class="note-title">Science: Key Discoveries — Biology, Physics, Chemistry</div>
+              <div class="note-sub">Science · 22 pages · Updated May 2026</div>
+            </div>
+            <span class="note-doc-icon">↗</span>
+          </a>
+
+          <a href="#" class="note-row reveal reveal-delay-3">
+            <div class="note-subject-bar" style="background:#67E8F9"></div>
+            <div class="note-info">
+              <div class="note-title">Science: Ethics in Technology — CRISPR, AI, Nuclear</div>
+              <div class="note-sub">Science · 14 pages · Updated Apr 2026</div>
+            </div>
+            <span class="note-doc-icon">↗</span>
+          </a>
+
+          <a href="#" class="note-row reveal">
+            <div class="note-subject-bar" style="background:#2DFFD4"></div>
+            <div class="note-info">
+              <div class="note-title">Literature: Key Texts, Authors &amp; Movements</div>
+              <div class="note-sub">Literature · 20 pages · Updated May 2026</div>
+            </div>
+            <span class="note-doc-icon">↗</span>
+          </a>
+
+          <a href="#" class="note-row reveal reveal-delay-1">
+            <div class="note-subject-bar" style="background:#2DFFD4"></div>
+            <div class="note-info">
+              <div class="note-title">Literature: Narrative Theory &amp; Media Studies</div>
+              <div class="note-sub">Literature · 11 pages · Updated Apr 2026</div>
+            </div>
+            <span class="note-doc-icon">↗</span>
+          </a>
+
+          <a href="#" class="note-row reveal reveal-delay-2">
+            <div class="note-subject-bar" style="background:#FCA5A5"></div>
+            <div class="note-info">
+              <div class="note-title">Art &amp; Music: Movements, Artists &amp; Works — Master Reference</div>
+              <div class="note-sub">Art &amp; Music · 24 pages · Updated May 2026</div>
+            </div>
+            <span class="note-doc-icon">↗</span>
+          </a>
+
+          <a href="#" class="note-row reveal reveal-delay-3">
+            <div class="note-subject-bar" style="background:#F5A623"></div>
+            <div class="note-info">
+              <div class="note-title">Special Area: The Impossible — Complete Theme Notes</div>
+              <div class="note-sub">Special Area · 30 pages · Updated Jun 2026</div>
+            </div>
+            <span class="note-doc-icon">↗</span>
+          </a>
+
+          <a href="#" class="note-row reveal">
+            <div class="note-subject-bar" style="background:#BEF264"></div>
+            <div class="note-info">
+              <div class="note-title">Ethics &amp; Philosophy: Core Theories &amp; Thinkers</div>
+              <div class="note-sub">Ethics · 16 pages · Updated Apr 2026</div>
+            </div>
+            <span class="note-doc-icon">↗</span>
+          </a>
+
+          <a href="#" class="note-row reveal reveal-delay-1">
+            <div class="note-subject-bar" style="background:#BEF264"></div>
+            <div class="note-info">
+              <div class="note-title">Ethics: Thought Experiments &amp; Moral Paradoxes</div>
+              <div class="note-sub">Ethics · 10 pages · Updated Mar 2026</div>
+            </div>
+            <span class="note-doc-icon">↗</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Sidebar tools -->
+      <div class="hub-side-section">
+        <div class="hub-section-header">
+          <span class="hub-section-icon">🔧</span>
+          <span class="hub-section-title">Tools &amp; Resources</span>
+        </div>
+        <div class="hub-tools-grid reveal">
+          <div class="hub-tool">
+            <span class="hub-tool-icon">📊</span>
+            <div class="hub-tool-name">Score Tracker</div>
+          </div>
+          <div class="hub-tool">
+            <span class="hub-tool-icon">🗂️</span>
+            <div class="hub-tool-name">Flashcards</div>
+          </div>
+          <div class="hub-tool">
+            <span class="hub-tool-icon">⏱️</span>
+            <div class="hub-tool-name">Essay Timer</div>
+          </div>
+          <div class="hub-tool">
+            <span class="hub-tool-icon">🔀</span>
+            <div class="hub-tool-name">Random Q</div>
+          </div>
+          <div class="hub-tool">
+            <span class="hub-tool-icon">📋</span>
+            <div class="hub-tool-name">Essay Rubric</div>
+          </div>
+          <div class="hub-tool">
+            <span class="hub-tool-icon">🎯</span>
+            <div class="hub-tool-name">Weak Spots</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem;">
+          <div class="hub-section-header">
+            <span class="hub-section-icon">🔗</span>
+            <span class="hub-section-title">External Links</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:0.6rem;" class="reveal reveal-delay-1">
+            <a href="https://scholars.cup" target="_blank" class="note-row" style="margin-bottom:0">
+              <div class="note-info">
+                <div class="note-title">WSC Official Website</div>
+                <div class="note-sub">scholars.cup</div>
+              </div>
+              <span class="note-doc-icon">↗</span>
+            </a>
+            <a href="#" class="note-row" style="margin-bottom:0">
+              <div class="note-info">
+                <div class="note-title">2026 Theme Document</div>
+                <div class="note-sub">Google Drive</div>
+              </div>
+              <span class="note-doc-icon">↗</span>
+            </a>
+            <a href="#" class="note-row" style="margin-bottom:0">
+              <div class="note-info">
+                <div class="note-title">WSC Scholar's Bowl Archive</div>
+                <div class="note-sub">Past questions</div>
+              </div>
+              <span class="note-doc-icon">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /hub-grid -->
+
+    <!-- Vocabulary -->
+    <div class="hub-full-section">
+      <div class="hub-section-header">
+        <span class="hub-section-icon">📖</span>
+        <span class="hub-section-title">Key Vocabulary — 2026 Theme</span>
+      </div>
+      <div class="vocab-grid">
+        <div class="vocab-card reveal" style="--card-accent:#F5A623">
+          <span class="vocab-tag">Special Area</span>
+          <div class="vocab-term">Epistemic Impossibility</div>
+          <div class="vocab-def">Something unknowable given the limits of human knowledge or logical systems — Gödel's incompleteness is the paradigm case.</div>
+        </div>
+        <div class="vocab-card reveal reveal-delay-1" style="--card-accent:#67E8F9">
+          <span class="vocab-tag">Science</span>
+          <div class="vocab-term">Quantum Superposition</div>
+          <div class="vocab-def">A particle existing in multiple states simultaneously until observed — seemingly impossible by classical logic.</div>
+        </div>
+        <div class="vocab-card reveal reveal-delay-2" style="--card-accent:#A78BFA">
+          <span class="vocab-tag">Social Studies</span>
+          <div class="vocab-term">Paradigm Shift</div>
+          <div class="vocab-def">Kuhn's term for a revolutionary change in the framework within which science or society operates.</div>
+        </div>
+        <div class="vocab-card reveal" style="--card-accent:#BEF264">
+          <span class="vocab-tag">Ethics</span>
+          <div class="vocab-term">Moral Absolutism</div>
+          <div class="vocab-def">The view that certain actions are intrinsically right or wrong regardless of consequences — making some ethical demands categorically impossible to satisfy.</div>
+        </div>
+        <div class="vocab-card reveal reveal-delay-1" style="--card-accent:#2DFFD4">
+          <span class="vocab-tag">Literature</span>
+          <div class="vocab-term">Magical Realism</div>
+          <div class="vocab-def">A literary mode in which impossible events are presented as ordinary — García Márquez's central technique.</div>
+        </div>
+        <div class="vocab-card reveal reveal-delay-2" style="--card-accent:#FCA5A5">
+          <span class="vocab-tag">Art</span>
+          <div class="vocab-term">Avant-Garde</div>
+          <div class="vocab-def">Movements that reject existing conventions in favour of radical experimentation — pursuing aesthetically impossible goals by conventional standards.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Essay Frameworks -->
+    <div class="hub-full-section">
+      <div class="hub-section-header">
+        <span class="hub-section-icon">✍️</span>
+        <span class="hub-section-title">Essay Frameworks</span>
+      </div>
+      <div class="card-grid-3">
+        <div class="resource-card reveal" style="--card-accent: var(--gold)">
+          <div class="card-tag"><span class="card-dot"></span>Persuasive Essays</div>
+          <div class="card-title">The PEEL+ Framework</div>
+          <p class="card-desc">Point → Evidence → Explain → Link back. A reliable structure for persuasive WSC essays that can be deployed under 30-minute pressure.</p>
+          <div class="card-meta"><span class="card-pill">Template</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="resource-card reveal reveal-delay-1" style="--card-accent: var(--gold)">
+          <div class="card-tag"><span class="card-dot"></span>Analytical Essays</div>
+          <div class="card-title">The Claim–Tension–Resolution Model</div>
+          <p class="card-desc">How to structure an analytical essay that acknowledges complexity without losing its argument — the technique top scorers use.</p>
+          <div class="card-meta"><span class="card-pill">Template</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="resource-card reveal reveal-delay-2" style="--card-accent: var(--gold)">
+          <div class="card-tag"><span class="card-dot"></span>Both Types</div>
+          <div class="card-title">Opening Lines That Actually Work</div>
+          <p class="card-desc">25 opening line templates for WSC essays — hooks that avoid clichés and signal a sophisticated argument from the first sentence.</p>
+          <div class="card-meta"><span class="card-pill">Examples</span><span class="card-arrow">→</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /hub-body -->
+
+  <footer>
+    <div class="footer-brand"><span class="footer-logo"><span>I</span>GNITION</span></div>
+    <ul class="footer-links">
+      <li><a href="#" onclick="showPage('home')">Home</a></li>
+      <li><a href="#">Contribute Notes</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 IGNITION · WSC Resource Hub</div>
+  </footer>
+
+</div><!-- /page-hub -->
+
+<!-- ══════════════════════════════════════════════════
+     EVENTS PAGE
+══════════════════════════════════════════════════ -->
+<div id="page-events" class="page">
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <span class="section-label">IGNITION Events</span>
+      <h1 class="section-title" style="max-width:100%;">Season <span>Calendar</span></h1>
+      <p class="section-desc">All WSC 2026 rounds, registration deadlines, and key dates — with preparation guides for each stage.</p>
+    </div>
+  </div>
+
+  <div class="events-body">
+    <div class="events-layout">
+
+      <!-- Timeline -->
+      <div class="events-timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot-col">
+            <div class="timeline-dot done"><div class="timeline-dot-inner"></div></div>
+          </div>
+          <div class="timeline-content">
+            <div class="event-date-row">
+              <span class="event-date">February – March 2026</span>
+              <span class="event-status past">Completed</span>
+            </div>
+            <div class="event-title">Regional Round — Middle East & Africa</div>
+            <div class="event-location">📍 Dubai, UAE · Abu Dhabi, UAE · Cairo, Egypt</div>
+            <p class="event-desc">The opening regional rounds for the MEA zone. Scholar's Challenge, Team Debate, Collaborative Writing, and Team Bowl all contested across three cities.</p>
+            <div class="event-tags">
+              <span class="event-tag">Scholar's Challenge</span>
+              <span class="event-tag">Debate</span>
+              <span class="event-tag">Writing</span>
+              <span class="event-tag">Bowl</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot-col">
+            <div class="timeline-dot done"><div class="timeline-dot-inner"></div></div>
+          </div>
+          <div class="timeline-content">
+            <div class="event-date-row">
+              <span class="event-date">March – April 2026</span>
+              <span class="event-status past">Completed</span>
+            </div>
+            <div class="event-title">Regional Round — Asia Pacific</div>
+            <div class="event-location">📍 Singapore · Hong Kong · Bangkok, Thailand</div>
+            <p class="event-desc">APAC regional rounds across three host cities. High participation from Singapore and Hong Kong schools.</p>
+            <div class="event-tags">
+              <span class="event-tag">Scholar's Challenge</span>
+              <span class="event-tag">Debate</span>
+              <span class="event-tag">Writing</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot-col">
+            <div class="timeline-dot active"><div class="timeline-dot-inner"></div></div>
+          </div>
+          <div class="timeline-content active-event">
+            <div class="event-date-row">
+              <span class="event-date">May – June 2026</span>
+              <span class="event-status open">Open Now</span>
+            </div>
+            <div class="event-title">National Round — Open Registration</div>
+            <div class="event-location">📍 Multiple cities · Registration open</div>
+            <p class="event-desc">The national rounds are currently open for registration. Top teams from regionals advance automatically; wildcard entries still available in select regions. This is the last checkpoint before the global finals.</p>
+            <div class="event-tags">
+              <span class="event-tag">All Events</span>
+              <span class="event-tag">Registration Open</span>
+              <span class="event-tag">Wildcards Available</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot-col">
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+          </div>
+          <div class="timeline-content">
+            <div class="event-date-row">
+              <span class="event-date">July 2026</span>
+              <span class="event-status upcoming">Upcoming</span>
+            </div>
+            <div class="event-title">National Round — Americas</div>
+            <div class="event-location">📍 New York, USA · São Paulo, Brazil · Mexico City</div>
+            <p class="event-desc">Americas national rounds. Teams who qualified from February–April regionals compete here for Tournament of Champions qualification.</p>
+            <div class="event-tags">
+              <span class="event-tag">Scholar's Challenge</span>
+              <span class="event-tag">Debate</span>
+              <span class="event-tag">Writing</span>
+              <span class="event-tag">Bowl</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot-col">
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+          </div>
+          <div class="timeline-content">
+            <div class="event-date-row">
+              <span class="event-date">September 2026</span>
+              <span class="event-status upcoming">Upcoming</span>
+            </div>
+            <div class="event-title">National Round — Europe</div>
+            <div class="event-location">📍 London, UK · Prague, Czech Republic · Warsaw, Poland</div>
+            <p class="event-desc">European national rounds. Strong competition from UK, Czech, and Polish schools traditionally. Final qualifier before Barcelona.</p>
+            <div class="event-tags">
+              <span class="event-tag">All Events</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot-col">
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+          </div>
+          <div class="timeline-content">
+            <div class="event-date-row">
+              <span class="event-date">November 14–19, 2026</span>
+              <span class="event-status upcoming">Upcoming</span>
+            </div>
+            <div class="event-title">🏆 Tournament of Champions — Barcelona</div>
+            <div class="event-location">📍 Barcelona, Spain · Palau de Congressos</div>
+            <p class="event-desc">The global finals. 150+ teams from 80+ countries converge on Barcelona for the Tournament of Champions — the pinnacle of the WSC season. Five days of intense academic competition, international exchanges, and the closing ceremony.</p>
+            <div class="event-tags">
+              <span class="event-tag">All Events</span>
+              <span class="event-tag">Global Finals</span>
+              <span class="event-tag">150+ Teams</span>
+              <span class="event-tag">80+ Countries</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /timeline -->
+
+      <!-- Sidebar -->
+      <div class="events-sidebar">
+
+        <div class="sidebar-card reveal">
+          <div class="sidebar-title">Countdown to Barcelona</div>
+          <div class="countdown-display">
+            <div class="countdown-unit">
+              <div class="countdown-num" id="cd-days">156</div>
+              <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-unit">
+              <div class="countdown-num" id="cd-hours">08</div>
+              <div class="countdown-label">Hrs</div>
+            </div>
+            <div class="countdown-unit">
+              <div class="countdown-num" id="cd-mins">22</div>
+              <div class="countdown-label">Min</div>
+            </div>
+            <div class="countdown-unit">
+              <div class="countdown-num" id="cd-secs">41</div>
+              <div class="countdown-label">Sec</div>
+            </div>
+          </div>
+          <div class="countdown-target">Tournament of Champions · Nov 14</div>
+        </div>
+
+        <div class="sidebar-card reveal reveal-delay-1">
+          <div class="sidebar-title">Key Deadlines</div>
+          <div class="deadline-list">
+            <div class="deadline-item">
+              <div class="deadline-dot" style="background: var(--flame)"></div>
+              <div class="deadline-info">
+                <div class="deadline-name">National Wildcard Registration</div>
+                <div class="deadline-date">June 30, 2026</div>
+              </div>
+            </div>
+            <div class="deadline-item">
+              <div class="deadline-dot" style="background: var(--gold)"></div>
+              <div class="deadline-info">
+                <div class="deadline-name">Barcelona Hotel Block Closes</div>
+                <div class="deadline-date">August 15, 2026</div>
+              </div>
+            </div>
+            <div class="deadline-item">
+              <div class="deadline-dot" style="background: var(--violet-light)"></div>
+              <div class="deadline-info">
+                <div class="deadline-name">ToC Team Registration</div>
+                <div class="deadline-date">September 30, 2026</div>
+              </div>
+            </div>
+            <div class="deadline-item">
+              <div class="deadline-dot" style="background: var(--mint)"></div>
+              <div class="deadline-info">
+                <div class="deadline-name">Barcelona Final Logistics</div>
+                <div class="deadline-date">October 31, 2026</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-card reveal reveal-delay-2">
+          <div class="sidebar-title">Prep for This Stage</div>
+          <div style="display:flex; flex-direction:column; gap: 0.6rem;">
+            <button class="btn-primary" style="width:100%;text-align:center;" onclick="showPage('mocks')">Take a Mock Test</button>
+            <button class="btn-ghost" style="width:100%;text-align:center;" onclick="showPage('guides')">Study Guides →</button>
+            <button class="btn-ghost" style="width:100%;text-align:center;" onclick="showPage('hub')">Summary Notes →</button>
+          </div>
+        </div>
+
+      </div><!-- /sidebar -->
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-brand"><span class="footer-logo"><span>I</span>GNITION</span></div>
+    <ul class="footer-links">
+      <li><a href="#" onclick="showPage('home')">Home</a></li>
+      <li><a href="https://scholars.cup" target="_blank">WSC Official</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 IGNITION · WSC Resource Hub</div>
+  </footer>
+
+</div><!-- /page-events -->
 
 <script>
-  /* ── STAR CONSTELLATION CANVAS ── */
-  (function() {
-    const canvas = document.getElementById('star-canvas');
-    const ctx = canvas.getContext('2d');
+/* ══════════════════════════════════════════════════
+   PAGE ROUTER
+══════════════════════════════════════════════════ */
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
 
-    const SUBJECTS = [
-      { label: 'Social Studies', x: 0.18, y: 0.28, color: '#A78BFA', size: 2.5 },
-      { label: 'Science', x: 0.38, y: 0.18, color: '#67E8F9', size: 2 },
-      { label: 'Literature', x: 0.62, y: 0.22, color: '#2DFFD4', size: 2.5 },
-      { label: 'Art & Music', x: 0.78, y: 0.38, color: '#F5A623', size: 2 },
-      { label: 'Special Area', x: 0.5, y: 0.42, color: '#F5A623', size: 3.5 },
-      { label: 'Ethics', x: 0.25, y: 0.6, color: '#BEF264', size: 2 },
-      { label: 'Philosophy', x: 0.72, y: 0.65, color: '#FCA5A5', size: 1.8 },
-    ];
+  const page = document.getElementById('page-' + name);
+  const btn = document.getElementById('nav-' + name);
 
-    const CONNECTIONS = [
-      [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 0],
-      [4, 6], [1, 4], [2, 4], [0, 5], [3, 6]
-    ];
+  if (page) {
+    page.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    initReveals();
+  }
+  if (btn) btn.classList.add('active');
+}
 
-    let stars = [];
-    let W, H;
+/* ══════════════════════════════════════════════════
+   MOCK SUB-TABS
+══════════════════════════════════════════════════ */
+function showMockTab(name, btn) {
+  document.querySelectorAll('.mock-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.mock-tab').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById('mock-panel-' + name);
+  if (panel) panel.classList.add('active');
+  if (btn) btn.classList.add('active');
+  initReveals();
+}
 
-    function resize() {
-      W = canvas.offsetWidth;
-      H = canvas.offsetHeight;
-      canvas.width = W;
-      canvas.height = H;
+/* ══════════════════════════════════════════════════
+   GUIDE FILTERS
+══════════════════════════════════════════════════ */
+function filterGuides(subject, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  document.querySelectorAll('.guides-section').forEach(section => {
+    if (subject === 'all' || section.dataset.subject === subject) {
+      section.style.display = '';
+    } else {
+      section.style.display = 'none';
     }
+  });
+}
 
-    function initStars() {
-      stars = [];
-      const count = Math.floor((W * H) / 4800);
-      for (let i = 0; i < count; i++) {
-        stars.push({
-          x: Math.random() * W,
-          y: Math.random() * H,
-          r: Math.random() * 1.2 + 0.2,
-          alpha: Math.random() * 0.6 + 0.1,
-          twinkleSpeed: Math.random() * 0.015 + 0.003,
-          twinkleOffset: Math.random() * Math.PI * 2
-        });
-      }
-    }
-
-    let t = 0;
-
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-
-      /* background vignette */
-      const vg = ctx.createRadialGradient(W * 0.5, H * 0.42, 0, W * 0.5, H * 0.5, W * 0.7);
-      vg.addColorStop(0, 'rgba(21,15,46,0.0)');
-      vg.addColorStop(1, 'rgba(6,4,18,0.5)');
-      ctx.fillStyle = vg;
-      ctx.fillRect(0, 0, W, H);
-
-      /* background stars */
-      for (const s of stars) {
-        const alpha = s.alpha * (0.6 + 0.4 * Math.sin(t * s.twinkleSpeed + s.twinkleOffset));
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(240,238,249,${alpha})`;
-        ctx.fill();
-      }
-
-      /* constellation lines */
-      for (const [a, b] of CONNECTIONS) {
-        const sa = SUBJECTS[a], sb = SUBJECTS[b];
-        const ax = sa.x * W, ay = sa.y * H;
-        const bx = sb.x * W, by = sb.y * H;
-        const pulse = 0.08 + 0.04 * Math.sin(t * 0.008 + a);
-        ctx.beginPath();
-        ctx.moveTo(ax, ay);
-        ctx.lineTo(bx, by);
-        ctx.strokeStyle = `rgba(124,58,237,${pulse})`;
-        ctx.lineWidth = 1;
-        ctx.stroke();
-      }
-
-      /* subject nodes */
-      for (const s of SUBJECTS) {
-        const x = s.x * W, y = s.y * H;
-        const twinkle = 0.75 + 0.25 * Math.sin(t * 0.012 + s.x * 8);
-        const r = s.size * twinkle;
-
-        /* glow */
-        const grd = ctx.createRadialGradient(x, y, 0, x, y, r * 7);
-        grd.addColorStop(0, s.color + '40');
-        grd.addColorStop(1, s.color + '00');
-        ctx.beginPath();
-        ctx.arc(x, y, r * 7, 0, Math.PI * 2);
-        ctx.fillStyle = grd;
-        ctx.fill();
-
-        /* core */
-        ctx.beginPath();
-        ctx.arc(x, y, r, 0, Math.PI * 2);
-        ctx.fillStyle = s.color;
-        ctx.fill();
-
-        /* label */
-        if (W > 600) {
-          ctx.font = '500 11px "DM Sans", sans-serif';
-          ctx.fillStyle = 'rgba(240,238,249,0.45)';
-          ctx.textAlign = x < W * 0.5 ? 'right' : 'left';
-          const offset = x < W * 0.5 ? -12 : 12;
-          ctx.fillText(s.label, x + offset, y + 4);
-        }
-      }
-
-      t++;
-      requestAnimationFrame(draw);
-    }
-
-    window.addEventListener('resize', () => { resize(); initStars(); });
-    resize();
-    initStars();
-    draw();
-  })();
-
-  /* ── SCROLL REVEAL ── */
-  const observer = new IntersectionObserver((entries) => {
+/* ══════════════════════════════════════════════════
+   SCROLL REVEAL (re-runs on page switch)
+══════════════════════════════════════════════════ */
+let revealObserver;
+function initReveals() {
+  if (revealObserver) revealObserver.disconnect();
+  revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }, { threshold: 0.08 });
+  document.querySelectorAll('#page-' + currentPage() + ' .reveal').forEach(el => {
+    revealObserver.observe(el);
+  });
+}
+
+function currentPage() {
+  const active = document.querySelector('.page.active');
+  return active ? active.id.replace('page-', '') : 'home';
+}
+
+/* ══════════════════════════════════════════════════
+   STAR CONSTELLATION CANVAS
+══════════════════════════════════════════════════ */
+(function() {
+  const canvas = document.getElementById('star-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const SUBJECTS = [
+    { label: 'Social Studies', x: 0.18, y: 0.28, color: '#A78BFA', size: 2.5 },
+    { label: 'Science',        x: 0.38, y: 0.18, color: '#67E8F9', size: 2   },
+    { label: 'Literature',     x: 0.62, y: 0.22, color: '#2DFFD4', size: 2.5 },
+    { label: 'Art & Music',    x: 0.78, y: 0.38, color: '#FCA5A5', size: 2   },
+    { label: 'The Impossible', x: 0.50, y: 0.40, color: '#FF6B35', size: 4   },
+    { label: 'Ethics',         x: 0.25, y: 0.60, color: '#BEF264', size: 2   },
+    { label: 'Philosophy',     x: 0.72, y: 0.62, color: '#F5A623', size: 1.8 },
+  ];
+
+  const CONNECTIONS = [
+    [0,1],[1,2],[2,3],[3,4],[4,5],[5,0],
+    [4,6],[1,4],[2,4],[0,5],[3,6],[4,0]
+  ];
+
+  let stars = [], W, H, t = 0;
+
+  function resize() {
+    W = canvas.offsetWidth;
+    H = canvas.offsetHeight;
+    canvas.width = W;
+    canvas.height = H;
+    initStars();
+  }
+
+  function initStars() {
+    stars = [];
+    const count = Math.floor((W * H) / 4200);
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.3 + 0.2,
+        alpha: Math.random() * 0.55 + 0.1,
+        ts: Math.random() * 0.014 + 0.003,
+        to: Math.random() * Math.PI * 2
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    const vg = ctx.createRadialGradient(W*.5, H*.42, 0, W*.5, H*.5, W*.75);
+    vg.addColorStop(0, 'rgba(21,15,46,0)');
+    vg.addColorStop(1, 'rgba(6,4,18,0.55)');
+    ctx.fillStyle = vg;
+    ctx.fillRect(0, 0, W, H);
+
+    for (const s of stars) {
+      const a = s.alpha * (0.55 + 0.45 * Math.sin(t * s.ts + s.to));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(240,238,249,${a})`;
+      ctx.fill();
+    }
+
+    for (const [a,b] of CONNECTIONS) {
+      const sa = SUBJECTS[a], sb = SUBJECTS[b];
+      const pulse = 0.07 + 0.04 * Math.sin(t * 0.007 + a);
+      ctx.beginPath();
+      ctx.moveTo(sa.x*W, sa.y*H);
+      ctx.lineTo(sb.x*W, sb.y*H);
+      ctx.strokeStyle = `rgba(255,107,53,${pulse})`;
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+    }
+
+    for (const s of SUBJECTS) {
+      const x = s.x*W, y = s.y*H;
+      const twinkle = 0.78 + 0.22 * Math.sin(t * 0.011 + s.x * 8);
+      const r = s.size * twinkle;
+
+      const grd = ctx.createRadialGradient(x,y,0, x,y,r*8);
+      grd.addColorStop(0, s.color + '38');
+      grd.addColorStop(1, s.color + '00');
+      ctx.beginPath();
+      ctx.arc(x, y, r*8, 0, Math.PI*2);
+      ctx.fillStyle = grd;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI*2);
+      ctx.fillStyle = s.color;
+      ctx.fill();
+
+      if (W > 600) {
+        ctx.font = '500 11px "Lexend", sans-serif';
+        ctx.fillStyle = 'rgba(240,238,249,0.4)';
+        ctx.textAlign = x < W*.5 ? 'right' : 'left';
+        ctx.fillText(s.label, x + (x < W*.5 ? -14 : 14), y + 4);
+      }
+    }
+
+    t++;
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+})();
+
+/* ══════════════════════════════════════════════════
+   COUNTDOWN TIMER
+══════════════════════════════════════════════════ */
+function updateCountdown() {
+  const target = new Date('2026-11-14T09:00:00');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) return;
+
+  const days = Math.floor(diff / 86400000);
+  const hrs  = Math.floor((diff % 86400000) / 3600000);
+  const mins = Math.floor((diff % 3600000)  / 60000);
+  const secs = Math.floor((diff % 60000)    / 1000);
+
+  const d = document.getElementById('cd-days');
+  const h = document.getElementById('cd-hours');
+  const m = document.getElementById('cd-mins');
+  const s = document.getElementById('cd-secs');
+
+  if (d) d.textContent = String(days).padStart(2,'0');
+  if (h) h.textContent = String(hrs).padStart(2,'0');
+  if (m) m.textContent = String(mins).padStart(2,'0');
+  if (s) s.textContent = String(secs).padStart(2,'0');
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+/* ══════════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════════ */
+initReveals();
 </script>
 </body>
 </html>
